@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/0f759e3ba5.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css" />
+    <title>Combinate | <%= locals.title %> </title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="combinate-logo">
+            <img src="images/logo.png" alt="" class="combinate-icon">
+        </div>
+        <div class="sidebar-links">
+            <ul class="sidebar-links__links-container">
+                <a href="/overview">
+                    <li class="sidebar-links__link">
+                        <img src="images/home.png" alt="">
+                        <h2>Overview</h2>
+                    </li>
+                </a>
+                <a href="/todo">
+                    <li class="sidebar-links__link">
+                        <img src="images/to-do-list.png" alt="">
+                        <h2>To-Do Lists</h2>
+                    </li>
+                </a>
+                <li class="sidebar-links__link">
+                    <img src="images/loupe.png" alt="">
+                    <h2>Search</h2>
+                </li>
+                <li class="sidebar-links__link">
+                    <img src="images/messenger.png" alt="">
+                    <h2>Chats</h2>
+                </li>
+                <li class="sidebar-links__link">
+                    <img src="images/bookmark.png" alt="">
+                    <h2>Courses</h2>
+                </li>
+                <li class="sidebar-links__link">
+                    <img src="images/edit.png" alt="">
+                    <h2>Articles</h2>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-pane">
+        <nav class="navbar">
+            <div class="search-bar-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" name="search" id="search" placeholder="Search" class="search-input">
+            </div>
+            <div class="notification-container">
+                <div class="alert"></div>
+                <i class="fas fa-bell notification-icon"></i>
+            </div>
+            <div class="user-container">
+                <h2 class="user-container__name"><%= `${locals.userLoggedIn.name}`%> </h2>
+                <div class="user-container__icon-container">
+                    <img src="<%=locals.userLoggedIn.profilePic||'images/profilePic.jpeg'%>" alt="">
+                </div>
+            </div>
+        </nav>
+        <div class="main-content">
+            <div class="back-style"></div>

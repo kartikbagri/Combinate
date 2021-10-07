@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login-register.css">
+    <link rel="shortcut icon" href="images/combinateIcon.jpeg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0f759e3ba5.js" crossorigin="anonymous"></script>
+    <title>Combinate | Register</title>
+</head>
+
+<body>
+    <% if(locals.error.length) { %>
+        <div class="message message-failure">
+            <p> <%= locals.error %> </p>
+        </div>
+    <% } %> 
+    <div class="modal" id="registerModal">
+        <h1 class="modal-title">Sign Up</h1>
+        <form action="/register" method="POST" class="form">
+            <div class="input-container">
+                <label for="name" class="label-name">Full Name</label>
+                <input id="name" type="text" placeholder="Full Name" name="name" autocomplete="off" value= "<%= locals.name %>"  required>
+            </div>
+            <div class="input-container">
+                <label for="email" class="label-name">Email</label>
+                <input id="email" type="email" placeholder="Email" name="email" autocomplete="off" value= "<%= locals.email %>" required>
+                <% if(locals.errorRegisterEmail.length) { %>
+                    <p class="message-error">
+                        <span class="material-icons material-icons-outlined">warning</span> 
+                        <span class="error-text"><%= locals.errorRegisterEmail %></span>
+                    </p>
+                <% } %> 
+            </div>
+            <div class="input-container">
+                <label for="username" class="label-name">Username</label>
+                <input id="username" type="text" placeholder="Username" name="username" autocomplete="off" value= "<%= locals.username %>" required>
+                <% if(locals.errorRegisterUser.length) { %>
+                    <p class="message-error">
+                        <span class="material-icons material-icons-outlined">warning</span> 
+                        <span class="error-text"><%= locals.errorRegisterUser %></span>
+                    </p>
+                <% } %> 
+            </div>
+            <div class="input-container">
+                <label for="password" class="label-name">Password</label>
+                <input id="password" type="password" placeholder="Password" name="password" required>
+            </div>
+            <button type="submit" class="button">Sign Up</button>
+            <p class="link-options">Or continue with</p>
+            <a class="auth-icons" href="/auth/google">
+                <img src="images/google.png" class="google-icon" alt="Google login">
+            </a>
+        </form>
+        <a href="/login" class="register-link">Already have an account? Log in</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+                                                                                                                                                                                                                                        
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: rgba(255, 255, 255, 0.1);
+    min-height: 100vh;
+    background: linear-gradient(227.32deg, rgba(160, 21, 225, 0.8) 1.51%, rgba(137, 255, 253, 0.8) 75.77%), #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.message {
+    padding: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    min-width: 40%;
+    border-radius: 10px;
+}
+
+.message-error {
+    color: #D8000C;
+    padding: 0 10px;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.error-text {
+    padding-left: 5px;
+}
+
+.message-failure {
+    color: #D8000C;
+    background-color: #FFBABA;
+    border: 1px solid #D8000C;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px 7px rgba(0, 0, 0, 0.25);
+    display: flex;
+    font-size: 1.1rem;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 320px;
+    padding: 20px;
+    width : 35%;
+    margin: 40px;
+}
+
+.modal-title{
+    font-size: 1.6rem;
+    padding: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.label-name {
+    padding: 5px;
+}
+
+.input-container input {
+    border: 2px solid #E5E5E5;
+    border-radius: 12px;
+    font-size: 1rem;
+    padding: 12px;
+}
+
+.input-container input:focus-visible {
+    border: 1.5px solid #3a86ff;
+    outline: none;
+}
+
+.button {
+    background-color: #8338EC;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 25px;
+    padding: 12px;
+    width: 100%;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.button:focus-visible {
+    outline: none;
+}
+
+.register-link {
+    color: #8338EC;
+    text-align: center;
+    width: 100%;
+}
+
+.link-options {
+    color: grey;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.auth-icons {
+    margin: auto;
+}
+
+.google-icon {
+    margin: 20px auto;
+    width : 40px;
+}
+
+@media(min-width : 768px) and (max-width : 1024px) {
+    .modal{
+        width: 80%;
+    }
+}
+

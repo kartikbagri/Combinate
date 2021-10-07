@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login-register.css">
+    <link rel="shortcut icon" href="images/combinateIcon.jpeg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0f759e3ba5.js" crossorigin="anonymous"></script>
+    <title>Combinate | Login</title>
+</head>
+
+<body>
+    
+    <div class="modal" id="loginModal">
+        <h1 class="modal-title">Log in to your account</h1>
+        <form action="/login" method="POST" class="form">
+            <div class="input-container">
+                <label for="loginUsername" class="label-name">Email</label>
+                <input id="loginUsername" type="text" placeholder="Email or Username" name="username" autocomplete="off" required>
+            </div>
+            <div class="input-container">
+                <label for="password" class="label-name">Password</label>
+                <input id="password" type="password" placeholder="Password" name="password" required>
+            </div>
+            <% if(locals.error.length) { %>
+                    <p class="message-error">
+                        <span class="material-icons material-icons-outlined">warning</span> 
+                        <span class="error-text"><%= locals.error %></span>
+                    </p>
+            <% } %>
+            <button type="submit" class="button">Log In</button>
+            <p class="link-options">Or continue with</p>
+            <a class="auth-icons" href="/auth/google">
+                <img src="images/google.png" class="google-icon" alt="Google login">
+            </a>
+        </form>
+        <a href="/register" class="register-link">No account? Sign up</a>
+    </div>
+</body>
+
+</html>
