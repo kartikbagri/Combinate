@@ -218,7 +218,32 @@ body {
     flex: 1;
     background: linear-gradient(180deg, rgba(114, 9, 183, 0.53) 0%, rgba(0, 0, 0, 0.53) 100%);
     border-radius: 15px;
-    padding: 10px 20px;
+    padding: 20px;
+}
+
+.thought-section p {
+    font-size: 1.2rem;
+    line-height: 1.75;
+    font-style: italic;
+}
+
+.thought-section .quote-author {
+    font-style: normal;
+    padding-top: 7px;
+    text-align: right;
+    padding-right: 10px;
+
+}
+
+.thought-section .quote-error {
+    font-style: normal;
+    color:rgb(155, 155, 155);
+}
+
+.quote-error span {
+    vertical-align: middle;
+    padding-right: 5px;
+    color:rgb(155, 155, 155);
 }
 
 .goal-section {

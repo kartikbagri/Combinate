@@ -24,7 +24,16 @@
             <h2 class="section-name">Upcoming Contests</h2>
         </div>
         <div class="thought-section">
-            <h2 class="section-name">Thought of the day</h2>
+            <% if(locals.quoteError) { %> 
+
+                <p class="quote-error">
+                    <span class="material-icons material-icons-outlined">warning</span> 
+                    <%= locals.quoteError %>
+                </p>
+            <% } else { %>
+                <p class="quote-text">&ldquo;<%= locals.quoteText %>&rdquo;</p>
+                <p class="quote-author">~ <%= locals.quoteAuthor %></p>
+            <% } %>
         </div>
         <div class="progress-section">
         </div>
