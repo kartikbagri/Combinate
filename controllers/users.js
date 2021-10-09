@@ -20,13 +20,14 @@ const loginUser = async (req, res) => {
 
 // ********** RenderRegister Function **********
 const renderRegister = (req, res) => {
-    res.render('registerPage', req.session.prevInputs);
+    const prevInputs = req.session.prevInputs;
+    delete req.session.prevInputs;
+    res.render('registerPage', prevInputs);
 }
 
 // ********** RegisterUser Function **********
 const registerUser = async (req, res) => {
     try {
-        delete req.session.prevInputs;
         const {name, email, profilePic, username, password} = req.body;
         const user = new User({name, email, profilePic, username});
         const registeredUser = await User.register(user, password);

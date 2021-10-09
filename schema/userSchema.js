@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     profilePic: {
         type: String,
         default: ''
+    },
+    codingSites: {
+        type: [String],
+        default: ['codeforces']
     }
 });
 

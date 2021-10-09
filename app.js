@@ -58,6 +58,9 @@ mongoose.connect('mongodb://localhost:27017/combinateDatabase', {
     console.log(`Error setting up connection to database: ${err}`);
 });
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use((req, res, next) => {
     res.locals.userLoggedIn = req.user;
     res.locals.success = req.flash('success');
@@ -88,6 +91,9 @@ app.use('/overview', middleware.isLoggedIn, overviewRoute);
 // toDo Route
 const todoRoute = require('./routes/todoRoute');
 app.use('/todo', middleware.isLoggedIn, todoRoute);
+
+const usersApiRoute = require('./routes/api/users');
+app.use('/api/users', usersApiRoute);
 
 // Courses Route
 // const coursesRoute = require('./routes/coursesRoute');

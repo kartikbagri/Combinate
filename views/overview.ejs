@@ -1,41 +1,74 @@
 <%- include('layouts/head-layout') %> 
-    <div class="top-section">
-        <div class="goal-section">
-            <h2 class="section-name">Daily Goals</h2>
-            <ul class="tabs">
-                <li class="active-tab tab">Home</li>
-                <li class="tab">Grocery</li>
-                <li class="tab">Office</li>
-                <li class="tab plus-tab">+</li>
-            </ul>
-            <div class="goals">
+            <div class="top-section">
+                <div class="goal-section">
+                    <h2 class="section-name">Daily Goals</h2>
+                    <ul class="tabs">
+                        <li class="active-tab tab">Home</li>
+                        <li class="tab">Grocery</li>
+                        <li class="tab">Office</li>
+                        <li class="tab plus-tab">+</li>
+                    </ul>
+                    <div class="goals">
 
+                    </div>
+                </div>
+                <div class="top-section__right">
+                    <div class="calendar-section">
+                        <h2 class="section-name">Calendar</h2>
+                        <div id="color-calendar"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="top-section__right">
-            <div class="calendar-section">
-                <h2 class="section-name">Calendar</h2>
-                <div id="color-calendar"></div>
+            <div class="bottom-section">
+                <div class="schedule-section">
+                    <span id="addCodingSite" class="add-icon material-icons material-icons-outlined">add</span> 
+                    <div id="contestsContainer" class="contests-container">
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <div class="chart">
+
+                    </div>
+                </div>
+                <div class="thought-section">
+                    <% if(locals.quoteError) { %> 
+                        <p class="quote-error">
+                            <span class="material-icons material-icons-outlined">warning</span> 
+                            <%= locals.quoteError %>
+                        </p>
+                    <% } else { %>
+                        <blockquote>
+                            <p class="quote-text">&ldquo;<%= locals.quoteText %>&rdquo;</p>
+                            <p class="quote-author">~ <%= locals.quoteAuthor %></p>
+                        </blockquote>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>
-    <div class="bottom-section">
-        <div class="schedule-section">
-            <h2 class="section-name">Upcoming Contests</h2>
-        </div>
-        <div class="thought-section">
-            <% if(locals.quoteError) { %> 
-
-                <p class="quote-error">
-                    <span class="material-icons material-icons-outlined">warning</span> 
-                    <%= locals.quoteError %>
-                </p>
-            <% } else { %>
-                <p class="quote-text">&ldquo;<%= locals.quoteText %>&rdquo;</p>
-                <p class="quote-author">~ <%= locals.quoteAuthor %></p>
-            <% } %>
-        </div>
-        <div class="progress-section">
-        </div>
+<div class="backdrop"></div>
+<div id="addCodingSiteModal" class="modal">
+    <h2 class="modal-title">Select from the range of websites</h2>
+    <i id="addCodingSiteCloseModal" class="close-modal fas fa-times"></i>
+    <div class="modal-body">
+        <ul id="codingSitesList" class="coding-sites-list">
+            <li id="codeforces" class="coding-site">Codeforces</li>
+            <li id="top_coder" class="coding-site">TopCoder</li>
+            <li id="at_coder" class="coding-site">AtCoder</li>
+            <li id="hacker_rank" class="coding-site">HackerRank</li>
+            <li id="hacker_earth" class="coding-site">HackerEarth</li>
+            <li id="kick_start" class="coding-site">Kickstart</li>
+            <li id="leet_code" class="coding-site">LeetCode</li>
+        </ul>
     </div>
-<%- include('layouts/foot-layout') %> 
+    <div class="modal-footer">
+        <button id="addCodingSiteSubmitButton" class="submit-btn">Save</button>
+    </div>
+</div>
+    <script>
+        const contests = JSON.parse(`<%-JSON.stringify(locals.contestsResult)%>`);
+    </script>
+<script src="javascript/overview.js"></script>
+</body>
+
+</html>
