@@ -1,5 +1,4 @@
 // Importing Modules
-const { query } = require('express');
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 

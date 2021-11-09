@@ -47,16 +47,20 @@ const getContests = async (userLoggedIn) => {
         });
         finalRes.push(...res.data);
     }
-    finalRes.sort((a, b) => {
+    const today = new Date();
+    const finalResult = finalRes.filter(a => {
+        return (new Date(a.start_time) >= today);
+    })
+    finalResult.sort((a, b) => {
         const aNew = Date.parse(a.start_time.substring(0,23) + a.start_time.substring(26));
         const bNew = Date.parse(b.start_time.substring(0,23) + b.start_time.substring(26));
         return new Date(aNew).getTime() - new Date(bNew).getTime();
     });
-    return finalRes;
+    return finalResult;
 }
 
 const updateContestsResult = (payload, contestsResult) => {
-    if(contestsResult.status === 'fulfilled') {
+    if(contestsResult?.status === 'fulfilled') {
         payload.contestsResult = contestsResult.value;
     } else {
         payload.contestsError = 'Unable to fetch contest details';

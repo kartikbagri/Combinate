@@ -49,10 +49,7 @@ passport.use(new GoogleStrategy({
 }));
 
 // ********** Database Connection **********
-mongoose.connect('mongodb://localhost:27017/combinateDatabase', {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-}).then(() => {
+mongoose.connect('mongodb://localhost:27017/combinateDatabase').then(() => {
     console.log('Database Connection Successful');
 }).catch((err) => {
     console.log(`Error setting up connection to database: ${err}`);

@@ -9,6 +9,7 @@ const addCodingSiteSubmitButton = document.getElementById('addCodingSiteSubmitBu
 const updateCodingSites = () => {
     currCodingSites.forEach(site => {
         document.getElementById(site).classList.add('active-site');
+        
     });
 }
 
@@ -75,7 +76,7 @@ const createContestCard = (contest) => {
     ${contestDate.getDate()}
     </h2>
     <h3 class="contest-item__month">
-    ${contestDate.toLocaleString('default', { month: 'long' })}
+    ${contestDate.toLocaleString('default', { month: 'long' })} ${contestDate.getFullYear()}
     </h3>
     </div>
     <a href="${contest.url}" target="_blank">
@@ -88,8 +89,6 @@ const createContestCard = (contest) => {
     return HTMLText;
 }
 
-updateCodingSites();
-
 if(contests.length == 0) {
     // const HTMLText = 'Upcoming contests for various websites are shown here. Tap + icon to select sites of your choice';
     // document.getElementsByClassName('schedule-section')[0].insertAdjacentHTML('afterbegin', HTMLText);
@@ -99,3 +98,16 @@ if(contests.length == 0) {
         addContestCard(HTMLText);
     });
 }
+
+updateCodingSites();
+
+new Calendar({
+    id: "#color-calendar"
+});
+
+var bar = new ldBar(".chart", {
+    "stroke": 'rgba(114, 9, 183)',
+    "stroke-width": 8,
+    "preset": "circle",
+    "value": 65
+   });

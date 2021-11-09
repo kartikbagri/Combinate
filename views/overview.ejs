@@ -9,12 +9,12 @@
                         <li class="tab plus-tab">+</li>
                     </ul>
                     <div class="goals">
-
+                        
                     </div>
                 </div>
                 <div class="top-section__right">
                     <div class="calendar-section">
-                        <h2 class="section-name">Calendar</h2>
+                        <span class="event-add-btn material-icons material-icons-outlined">add</span> 
                         <div id="color-calendar"></div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="progress-section">
-                    <div class="chart">
+                    <div class="chart label-center" data-stroke-dir="reverse">
 
                     </div>
                 </div>
@@ -48,17 +48,73 @@
     </div>
 <div class="backdrop"></div>
 <div id="addCodingSiteModal" class="modal">
-    <h2 class="modal-title">Select from the range of websites</h2>
+    <h2 class="modal-title">Select from websites</h2>
     <i id="addCodingSiteCloseModal" class="close-modal fas fa-times"></i>
     <div class="modal-body">
         <ul id="codingSitesList" class="coding-sites-list">
-            <li id="codeforces" class="coding-site">Codeforces</li>
-            <li id="top_coder" class="coding-site">TopCoder</li>
-            <li id="at_coder" class="coding-site">AtCoder</li>
-            <li id="hacker_rank" class="coding-site">HackerRank</li>
-            <li id="hacker_earth" class="coding-site">HackerEarth</li>
-            <li id="kick_start" class="coding-site">Kickstart</li>
-            <li id="leet_code" class="coding-site">LeetCode</li>
+            <li id="codeforces" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img class="logo-size-modifier" src="images/codeforces-logo.png" alt="">
+                </div>
+                <h3 class="coding-site-name">Codeforces</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
+            <li id="top_coder" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img src="images/topcoder-logo.png" alt="">
+                </div>
+                <h3 class="coding-site-name">TopCoder</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
+            <li id="at_coder" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img class="ac-logo-size-modifier" src="images/atcoder-logo.png" alt="">
+                </div>
+                <h3 class="coding-site-name">AtCoder</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
+            <li id="hacker_rank" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img src="images/hackerrank-logo.png" alt="">
+                </div>
+                <h3 class="coding-site-name">HackerRank</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
+            <li id="hacker_earth" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img class="logo-size-modifier" src="images/hackerearth-logo.png" alt="">
+                </div>
+                <h3 class="coding-site-name">HackerEarth</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
+            <li id="kick_start" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img class="logo-size-modifier" src="images/google.png" alt="">
+                </div>
+                <h3 class="coding-site-name">KickStart</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
+            <li id="leet_code" class="coding-site">
+                <div class="coding-site-img-container">
+                    <img src="images/leetcode-logo.png" alt="">
+                </div>
+                <h3 class="coding-site-name">LeetCode</h3>
+                <span class="checked-site material-icons material-icons-outlined">
+                    check_circle_outline
+                </span>
+            </li>
         </ul>
     </div>
     <div class="modal-footer">

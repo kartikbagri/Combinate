@@ -14,7 +14,7 @@ body {
     background: linear-gradient(180deg, #413A80 0%, #000000 100%);
     background-repeat: no-repeat;
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw; 
 }
 
@@ -224,6 +224,7 @@ body {
     background: linear-gradient(180deg, rgba(114, 9, 183, 0.53) 0%, rgba(0, 0, 0, 0.53) 100%);
     border-radius: 15px;
     padding: 20px;
+    display: flex;
 }
 
 .thought-section p {
@@ -391,12 +392,26 @@ body {
 
 .calendar-section {
     /* background: linear-gradient(180deg, rgba(114, 9, 183, 0.53) 0%, rgba(0, 0, 0, 0.53) 100%); */
-    background: rgba(114, 9, 183, 0.53);
+    background: black;
     border-radius: 15px;
-    flex: 1;
-    height: 260px;
     margin: 0 10px;
-    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 30px -10px rgba(150, 170, 180, 0.2);
+}
+
+.event-add-btn {
+    align-self: flex-end;
+    margin: 10px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.event-add-btn:hover {
+    background-color: #fff;
+    border-radius: 50%;
+    color: black;
+    transition: 0.2s;
 }
 
 .lists-section {
@@ -497,10 +512,10 @@ body {
     display: none;
     color: white;
     position: fixed;
-    z-index: 3;
+    z-index: 5;
     top: 10%;
     left: 50%;
-    width: 80vw;
+    width: 75vw;
     min-width: 320px;
     transform: translateX(-50%);
     background-color: black;
@@ -527,18 +542,64 @@ body {
     flex: 0 0 25%;
     text-align: center;
     font-size: 1.25rem;
-    border: 2px solid white;
-    margin: 20px;
+    margin: 10px;
     padding: 10px;
-    border-radius: 30px;
+    transition: 0.1s;
+}
+
+.coding-site {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 10px; */
+    position: relative;
+}
+
+.checked-site {
+    position: absolute;
+    visibility: hidden;
+    top: 10px;
+    right: 10px;
+    color: white;
+}
+
+.active-site {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.active-site .checked-site {
+    visibility: visible;
     transition: 0.2s;
 }
 
-.coding-sites-list .active-site {
-    background-color: rgba(114, 9, 183);
-    color: white;
-    border-color: rgba(114, 9, 183, 0.53);
-    transition: 0.1s;
+.coding-site:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.coding-site-name {
+    padding-top: 6px;
+}
+
+.coding-site-img-container {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+}
+
+.coding-site-img-container img {
+    width: 120%;
+}
+
+.coding-site-img-container .logo-size-modifier {
+    width: 70%;
+}
+.coding-site-img-container .ac-logo-size-modifier {
+    width: 100%;
 }
 
 .modal-body {
@@ -593,8 +654,95 @@ body {
     border: 2px solid white;
 }
 
-.chart {
-    border-radius: 50%;
-    padding: 50%;
+.color-calendar {
+    z-index: 0;
+}
+
+.color-calendar.basic {
+    --cal-color-primary: white;
+    --cal-header-color: white;
+    --cal-weekdays-color: white;
+    background-color: black;
+    box-shadow: none;
+}
+
+.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-box {
     background-color: rgba(114, 9, 183);
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.color-calendar.basic .calendar__days .calendar__day-box {
+    box-shadow: none;
+}
+
+.color-calendar.basic .calendar__header {
+    padding-top: 10px;
+}
+
+.color-calendar.basic .calendar__days .calendar__day-today .calendar__day-box {
+    border-radius: 50%;
+}
+
+.color-calendar.basic .calendar__days .calendar__day-box {
+    border-radius: 50%;
+}
+
+.color-calendar.basic .calendar__picker {
+    background-color: black;
+}
+
+.color-calendar .calendar__picker .calendar__picker-month-option {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.color-calendar .calendar__picker .calendar__picker-month-option:hover {
+    background-color: rgba(128, 128, 128, 0.351)
+}
+
+.color-calendar .calendar__picker .calendar__picker-month-selected {
+    background-color: rgba(114, 9, 183);
+}
+
+.color-calendar .calendar__picker .calendar__picker-month-selected:hover {
+    background-color: rgba(114, 9, 183);
+}
+
+.color-calendar .calendar__picker .calendar__picker-year-option {
+    background-color: black;
+    color: white;
+}
+
+.color-calendar .calendar__picker .calendar__picker-year-option:hover {
+    background-color: rgba(128, 128, 128, 0.351)
+}
+
+.color-calendar .calendar__picker .calendar__picker-year-selected {
+    background-color: rgba(114, 9, 183);
+}
+
+.color-calendar .calendar__picker .calendar__picker-year-selected:hover {
+    background-color: rgba(114, 9, 183);
+}
+
+
+
+.chart {
+    flex: 1;
+    height: 100%!important;
+    width: 100%!important;
+}
+
+.ldBar path.baseline {
+    stroke: transparent;
+    stroke-linecap: round;
+}
+
+.ldBar path.mainline {
+    stroke-linecap: round;
+}
+
+.ldBar-label {
+    font-size: 1.8rem;
 }
