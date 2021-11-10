@@ -15,6 +15,15 @@ router.patch('/category/new/:id', async (req, res) => {
     res.sendStatus(200);
 })
 
+router.patch('/complete/:taskId', async (req, res) => {
+    await Task.findByIdAndUpdate(req.params.taskId, {isCompleted: true})
+    .catch(err => {
+        console.log(err);
+        res.sendStatus(400).json(err);
+    });
+    res.sendStatus(200);
+})
+
 router.patch('/task/new/:id', async (req, res) => {
     const taskId = req.body;
     const userId = req.params.id;
@@ -45,12 +54,16 @@ router.get('/:id', async (req, res) => {
         console.log(err);
         res.sendStatus(400).json(err);
     });
-    res.status(200).send(user);
+    const tasks = user.tasks;
+    const result = tasks.filter(task => {
+        return task.isCompleted === false;
+    });
+    res.status(200).send(result);
 })
 
 router.delete('/category/:categoryName', async (req, res) => {
     const categoryName = req.params.categoryName;
-    const userId = req.body.userId;
+    const userId = req.user._id;
     await Task.deleteMany({category: categoryName})
     .catch(err => {
         console.log(err);

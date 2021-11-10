@@ -48,6 +48,18 @@
             <button id="deleteCategorySubmitButton" class="submit-btn delete-submit-btn">Delete</button>
         </div>
     </div>
+    <div id="completeTaskModal" class="modal">
+        <h2 id="completeTaskModalTitle" class="modal-title">Delete Category: </h2>
+        <i id="completeTaskCloseModal" class="close-modal fas fa-times"></i>
+        <div class="modal-body">
+            <p class="modal-confirmation">
+                Do you wish to complete this task?
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button id="completeTaskSubmitButton" class="submit-btn complete-submit-btn">Mark as Done</button>
+        </div>
+    </div>
     <div id="newTaskModal" class="modal modal-padding-remove">
         <h2 class="modal-title">New Task</h2>
         <i id="newTaskCloseModal" class="close-modal fas fa-times"></i>
@@ -95,11 +107,11 @@
                 <div id="thirdStep" class="modal-step">
                     <div class="modal-input-container">
                         <label class="modal-label-name" for="newTaskStartTime">Start Time</label>
-                        <input class="modal-input" type="datetime-local" id="newTaskStartTime" value="<%= new Date().toISOString().slice(0, -8) %>" required>
+                        <input class="modal-input" type="datetime-local" id="newTaskStartTime" required>
                     </div>
                     <div class="modal-input-container">
                         <label class="modal-label-name" for="newTaskEndTime">End Time</label>
-                        <input class="modal-input" type="datetime-local" id="newTaskEndTime" value="<%= new Date().toISOString().slice(0, -8) %>" required>
+                        <input class="modal-input" type="datetime-local" id="newTaskEndTime" required>
                     </div>
                     <div class="modal-footer">
                         <span id="stepbackTwoBtn" class="prev-btn material-icons material-icons-outlined">

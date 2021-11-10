@@ -23,6 +23,14 @@ const taskSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
+    isCollaborative: {
+        type: Boolean,
+        default: false
+    },
+    isCompleted: {
+        type: Boolean,
+        default: false
+    },
     collaborators: {
         type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
     },

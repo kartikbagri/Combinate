@@ -9,6 +9,9 @@ const newCategoryAddBtn = document.getElementById('newCategoryAddBtn');
 const newCategoryCloseModal = document.getElementById('newCategoryCloseModal');
 const newCategorySubmitButton = document.getElementById('newCategorySubmitButton');
 const deleteCategorySubmitButton = document.getElementById('deleteCategorySubmitButton');
+const completeTaskSubmitButton = document.getElementById('completeTaskSubmitButton');
+const completeTaskCloseModal = document.getElementById('completeTaskCloseModal');
+const deleteCategoryCloseModal = document.getElementById('deleteCategoryCloseModal');
 
 const newTaskCloseModal = document.getElementById('newTaskCloseModal');
 const newTaskSubmitButton = document.getElementById('newTaskSubmitButton');
@@ -46,7 +49,6 @@ stepbackOneBtn.addEventListener('click', () => {
     newTaskModalTranslate -= 1;
 });
 
-console.log(stepbackTwoBtn);
 stepbackTwoBtn.addEventListener('click', () => {
     modalStepsContainer.classList.add('slide-right-2');
     modalStepsContainer.classList.remove('slide-left-2');
@@ -74,6 +76,7 @@ document.querySelector('.backdrop').addEventListener('click', function() {
     closeModal('newCategory');
     closeModal('newTask');
     closeModal('deleteCategory');
+    closeModal('completeTask');
 });
 
 newCategoryCloseModal.addEventListener('click', () => {
@@ -82,6 +85,14 @@ newCategoryCloseModal.addEventListener('click', () => {
 
 newTaskCloseModal.addEventListener('click', () => {
     closeModal('newTask');
+})
+
+completeTaskCloseModal.addEventListener('click', () => {
+    closeModal('completeTask');
+})
+
+deleteCategoryCloseModal.addEventListener('click', () => {
+    closeModal('deleteCategory');
 })
 
 newCategorySubmitButton.addEventListener('click', () => {
@@ -108,6 +119,11 @@ newTaskSubmitButton.addEventListener('click', () => {
 deleteCategorySubmitButton.addEventListener('click', () => {
     const categoryToDelete = deleteCategorySubmitButton.dataset.category;
     deleteCategory(categoryToDelete);
+});
+
+completeTaskSubmitButton.addEventListener('click', () => {
+    const taskToComplete = completeTaskSubmitButton.dataset.taskid;
+    completeTask(taskToComplete);
 });
 
 // Modals
@@ -149,17 +165,27 @@ const buildDate = (dateString) => {
 // Rendering Tasks
 const renderTasks = async () => {
     const res = await axios.get(`/api/tasks/${userLoggedIn._id}`);
-    const tasks = res.data.tasks;
+    const tasks = res.data;
     for(let i = 0; i < tasks.length; i++) {
-        document.getElementById(tasks[i].category).insertAdjacentHTML('beforeend',
-        `
-        <div class="task-card">
-            <h4 class="task-heading"><span class="bullet">•</span>${tasks[i].title}</h4>
-            <p class="task-description">${tasks[i].description}</p>
-            <p class="task-time">${buildDate(tasks[i].startTime)} - ${buildDate(tasks[i].endTime)}</p>
-            <div class="members-list"></div>
-        </div>
-        `);
+        if(tasks[i].isCompleted === false) {
+            let sideIcon = '';
+            console.log(tasks[i]._id)
+            if(tasks[i].endTime < new Date().toISOString()) {
+                sideIcon = `<span data-taskId="${tasks[i]._id}" data-taskTitle="${tasks[i].title}" class="task-missed-btn material-icons material-icons-outlined">priority_high</span>`
+            } else {
+                sideIcon = `<span data-taskId="${tasks[i]._id}" data-taskTitle="${tasks[i].title}" class="task-complete-btn material-icons material-icons-outlined">task_alt</span>`
+            }
+            document.getElementById(tasks[i].category).insertAdjacentHTML('beforeend',
+            `
+            <div class="task-card">
+                ${sideIcon}
+                <h4 class="task-heading"><span class="bullet">•</span>${tasks[i].title}</h4>
+                <p class="task-description">${tasks[i].description}</p>
+                <p class="task-time">${buildDate(tasks[i].startTime)} - ${buildDate(tasks[i].endTime)}</p>
+                <div class="members-list"></div>
+            </div>
+            `);
+        }
     }
 };
 
@@ -171,12 +197,18 @@ const deleteCategory = async (category) => {
     document.getElementById(category).remove();
 }
 
+const completeTask = async (taskId) => {
+    await axios.patch(`/api/tasks/complete/${taskId}`)
+    .catch(err => console.log(err));
+    location.reload();
+}
+
 // Adding new Category
 
 const addNewCategory = async (newCategory) => {
     if (newCategory !== null) {
         categories.push(newCategory);
-        const res = await axios.delete(`/api/tasks/category/new/${userLoggedIn._id}`, categories)
+        const res = await axios.patch(`/api/tasks/category/new/${userLoggedIn._id}`, categories)
         .catch(err => console.log(err));
         console.log(res);
         location.reload();
@@ -196,6 +228,18 @@ const addNewTask = async (newTask) => {
 }
 
 document.addEventListener('click', event => {
+    if(event.target.classList.contains('task-complete-btn')) {
+        const taskId = event.target.dataset.taskid;
+        console.log(taskId);
+        const taskTitle = event.target.dataset.tasktitle;
+        const completeTaskModalTitle = document.getElementById('completeTaskModalTitle');
+        completeTaskModalTitle.innerText = `Complete Task: ${taskTitle}`;
+        completeTaskSubmitButton.dataset.taskid = taskId;
+        openModal('completeTask');
+    }
+});
+
+document.addEventListener('click', event => {
     if(event.target.classList.contains('delete-category')) {
         const category = event.target.dataset.category;
         const deleteCategoryModalTitle = document.getElementById('deleteCategoryModalTitle');
@@ -203,7 +247,7 @@ document.addEventListener('click', event => {
         deleteCategorySubmitButton.dataset.category = category;
         openModal('deleteCategory');
     }
-})
+});
 
 document.addEventListener('click', event => {
     if (event.target.closest('.plus')) {
@@ -215,8 +259,8 @@ document.addEventListener('click', event => {
         thirdStep.classList.add('hidden-section');
         document.getElementById('newTaskTitle').value = "",
         document.getElementById('newTaskDescription').value = "",
-        document.getElementById('newTaskStartTime').value = new Date().toISOString().slice(0, -8),
-        document.getElementById('newTaskEndTime').value = new Date().toISOString().slice(0, -8);
+        document.getElementById('newTaskStartTime').value = "",
+        document.getElementById('newTaskEndTime').value = "",
         radioCollaborative.checked = false;
         radioIndividual.checked = true;
         radioLabelCollaborative.closest('.radio-container').classList.remove('radio-checked');

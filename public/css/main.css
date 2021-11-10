@@ -470,10 +470,32 @@ body {
     color: red;
 }
 
+.task-complete-btn, .task-missed-btn {
+    font-size: 1.2rem;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.complete-submit-btn {
+    background-color: green;
+}
+
+.task-missed-btn {
+    cursor: pointer;
+    color: red;
+}
+
+.task-complete-btn:hover {
+    color: green;
+}
+
 .task-card {
     background: rgba(54, 100, 204, 0.39);
     padding: 20px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .lists-category {
