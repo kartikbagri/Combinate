@@ -92,13 +92,16 @@ app.use('/todo', middleware.isLoggedIn, todoRoute);
 const usersApiRoute = require('./routes/api/users');
 app.use('/api/users', usersApiRoute);
 
+const tasksApiRoute = require('./routes/api/tasks');
+app.use('/api/tasks', tasksApiRoute);
+
+// Search Route
+const searchRoute = require('./routes/searchRoute');
+app.use('/users', middleware.isLoggedIn, searchRoute);
+
 // Courses Route
 // const coursesRoute = require('./routes/coursesRoute');
 // app.use('/courses', coursesRoute);
-
-// Search Route
-// const searchRoute = require('./routes/searchRoute');
-// app.use('/search', searchRoute);
 
 // Chats Route
 // const chatsRoute = require('./routes/chatsRoute');

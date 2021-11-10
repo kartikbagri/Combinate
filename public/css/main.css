@@ -12,7 +12,6 @@
 body {
     /* background: linear-gradient(241.63deg, #0F0C29 19.05%, #302B63 52.23%, #24243E 106.81%); */
     background: linear-gradient(180deg, #413A80 0%, #000000 100%);
-    background-repeat: no-repeat;
     display: flex;
     min-height: 100vh;
     width: 100vw; 
@@ -105,7 +104,7 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    width: 17vw;
+    width: 16vw;
 }
 
 .sidebar-links {
@@ -449,6 +448,7 @@ body {
 }
 
 .list {
+    position: relative;
     background: rgba(64, 4, 165, 0.47);
     border-radius: 7px;
     margin: 10px;
@@ -456,6 +456,18 @@ body {
     flex: 0 0 30%;
     overflow: scroll;
     height: 70vh;
+}
+
+.delete-category {
+    position: absolute;
+    font-size: 1.3rem;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.delete-category:hover {
+    color: red;
 }
 
 .task-card {
@@ -474,6 +486,11 @@ body {
     font-weight: bolder;
 }
 
+.task-time {
+    padding-top: 5px;
+    color:rgb(194, 194, 194);
+}
+
 .bullet {
     margin-right: 18px;
 }
@@ -482,6 +499,7 @@ body {
     vertical-align: middle;
     text-align: center;
     padding: 5px;
+    cursor: pointer;
 }
 
 .new-button {
@@ -504,8 +522,8 @@ body {
     z-index: 2;
     background-color: rgb(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .modal {
@@ -515,7 +533,7 @@ body {
     z-index: 5;
     top: 10%;
     left: 50%;
-    width: 75vw;
+    width: 70vw;
     min-width: 320px;
     transform: translateX(-50%);
     background-color: black;
@@ -525,6 +543,135 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     border: 2px solid white;
+}
+
+.slide-left-1 {
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.slide-left-2 {
+    transform: translateX(-200%);
+    transition: 0.5s;
+}
+
+.slide-right-1 {
+    transform: translateX(0);
+    transition: 0.5s;
+}
+
+.slide-right-2 {
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-steps-container {
+    display: flex;
+}
+
+.modal-step {
+    flex: 0 0 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-padding-remove {
+    padding: 0;
+}
+
+.modal-padding {
+    padding: 50px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.modal-input-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.radio-container {
+    background-color: rgba(17, 26, 48, 0.39);
+    border-radius: 30px;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    flex: 1;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.radio-checked {
+    background-color: rgba(24, 71, 191, 0.39);
+}
+
+.radio-btn {
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.radio-label {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    padding: 10px;
+    flex: 1;
+    cursor: pointer;
+}
+
+.modal-label-name {
+    font-size: 1.3rem;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+textarea {
+    height: 110px;
+}
+
+.modal-input {
+    font-size: 1.3rem;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+}
+
+.modal-input:focus-visible {
+    outline: none;
+}
+
+.nav-btn-container {
+    display: flex;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.next-btn, .prev-btn  {
+    font-size: 2.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.next-btn {
+    margin-left: auto;
+}
+
+.prev-btn {
+    margin-right: auto;
+}
+
+.next-btn:hover, .prev-btn:hover {
+    background-color: #fff;
+    color: black;
+    transition: 0.2s;
 }
 
 .coding-sites-list {
@@ -639,6 +786,7 @@ body {
 .modal-footer {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .submit-btn {
@@ -649,9 +797,13 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     left: 100%;
-    margin: 10px 30px;
+    margin: 10px 5px;
     padding: 10px 20px;
     border: 2px solid white;
+}
+
+.delete-submit-btn {
+    background-color: red;
 }
 
 .color-calendar {
@@ -725,8 +877,6 @@ body {
 .color-calendar .calendar__picker .calendar__picker-year-selected:hover {
     background-color: rgba(114, 9, 183);
 }
-
-
 
 .chart {
     flex: 1;

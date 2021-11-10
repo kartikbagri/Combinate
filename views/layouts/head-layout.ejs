@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const userLoggedIn = JSON.parse('<%-JSON.stringify(userLoggedIn)%>');
+    </script>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css" />
     <script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.js"></script>
@@ -13,9 +17,6 @@
     <script type="text/javascript" src="javascript/loading-bar.js"></script>
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <link rel="stylesheet" href="css/main.css">
-    <script>
-        const userLoggedIn = JSON.parse('<%-JSON.stringify(userLoggedIn)%>');
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Combinate | <%= locals.title %> </title>
 </head>
@@ -39,10 +40,12 @@
                         <h2>To-Do Lists</h2>
                     </li>
                 </a>
-                <li class="sidebar-links__link">
-                    <img src="images/loupe.png" alt="">
-                    <h2>Search</h2>
-                </li>
+                <a href="/users">
+                    <li class="sidebar-links__link">
+                        <img src="images/loupe.png" alt="">
+                        <h2>Users</h2>
+                    </li>
+                </a>
                 <li class="sidebar-links__link">
                     <img src="images/messenger.png" alt="">
                     <h2>Chats</h2>

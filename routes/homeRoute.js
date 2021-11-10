@@ -6,7 +6,7 @@ const router = express.Router();
 
 // ********** Landing Page Render **********
 router.get('/', (req, res) => {
-    res.send('home');
+    res.render('homePage', );
 })
 
 // ********* Exporting Modules **********

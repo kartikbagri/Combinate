@@ -23,6 +23,13 @@ const userSchema = new mongoose.Schema({
     codingSites: {
         type: [String],
         default: ['codeforces']
+    },
+    tasks: {
+        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}],
+        ref: 'Task'
+    },
+    categories: {
+        type: [String]
     }
 });
 

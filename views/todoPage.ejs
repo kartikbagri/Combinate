@@ -4,99 +4,112 @@
     </div>
     <div class="lists-section">
         <div class="lists-section__top-section">
-            <div class="lists-section__top-section-links new-button">
+            <div id="newCategoryAddBtn" class="lists-section__top-section-links new-button">
                 <span class=" material-icons material-icons-outlined">
                     add
                 </span>
                 <h3 class="links-heading">New List</h3>
             </div>
             <div class="lists-section__top-section-links">
-                <h3 class="links-heading">Category</h3>
+                <h3 class="links-heading">All</h3>
                 <h3 class="links-heading">
                     <span class="material-icons material-icons-outlined">expand_more</span>
                 </h3>
             </div>
         </div>
-        <div class="list-container">
-            <div class="list">
-                <h3 class="lists-category">Home</h3>
-                <div class="task-card plus"><span class=" material-icons material-icons-outlined">
-                        add
-                    </span></div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
+        <div id="listContainer" class="list-container">
+        </div>
+    </div>
+    <div class="backdrop"></div>
+    <div id="newCategoryModal" class="modal">
+        <h2 class="modal-title">New Category</h2>
+        <i id="newCategoryCloseModal" class="close-modal fas fa-times"></i>
+        <div class="modal-body">
+            <div class="modal-padding">
+                <div class="modal-input-container">
+                    <label for="newCategoryInput" class="modal-label-name">Category Title</label>
+                    <input class="modal-input" type="text" id="newCategoryInput" placeholder="Title for new Category" required>
                 </div>
             </div>
-            <div class="list">
-                <h3 class="lists-category">Work</h3>
-                <div class="task-card plus"><span class=" material-icons material-icons-outlined">
-                        add
-                    </span></div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
+        </div>
+        <div class="modal-footer">
+            <button id="newCategorySubmitButton" class="submit-btn">Save</button>
+        </div>
+    </div>
+    <div id="deleteCategoryModal" class="modal">
+        <h2 id="deleteCategoryModalTitle" class="modal-title">Delete Category: </h2>
+        <i id="deleteCategoryCloseModal" class="close-modal fas fa-times"></i>
+        <div class="modal-body">
+            <p class="modal-confirmation">
+                All tasks in this category will be deleted. Do you wish to delete this category?
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button id="deleteCategorySubmitButton" class="submit-btn delete-submit-btn">Delete</button>
+        </div>
+    </div>
+    <div id="newTaskModal" class="modal modal-padding-remove">
+        <h2 class="modal-title">New Task</h2>
+        <i id="newTaskCloseModal" class="close-modal fas fa-times"></i>
+        <div class="modal-body">
+            <div id="modalStepsContainer" class="modal-steps-container">
+                <div id="firstStep" class="modal-step">
+                    <div class="modal-input-container">
+                        <div class="radio-container">
+                            <input class="radio-btn" type="radio" name="isCollaborative" id="radioCollaborative" value="Yes">
+                            <label id="radioLabelCollaborative" class="radio-label" for="radioCollaborative">Collaborative</label><br>
+                        </div>
+                        <div class="radio-container radio-checked">
+                            <input class="radio-btn" type="radio" name="isCollaborative" id="radioIndividual" value="No" checked>
+                            <label id="radioLabelIndividual" class="radio-label" for="radioIndividual">Individual</label><br>
+                        </div>
+                    </div>
+                    <div class="nav-btn-container">
+                        
+                        <span id="stepOneBtn" class="next-btn material-icons material-icons-outlined">
+                            navigate_next
+                        </span>
+                    </div>
                 </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
+                <div id="secondStep" class="modal-step">
+                    <div class="modal-input-container">
+                        <label for="newTaskTitle" class="modal-label-name">Task Title</label>
+                        <input class="modal-input" type="text" id="newTaskTitle" placeholder="Title for new task" required>
+                    </div>
+                    <div class="modal-input-container">
+                        <label for="newTaskDescription" class="modal-label-name">Task Description</label>
+                        <textarea class="modal-input" type="text" id="newTaskDescription" placeholder="Description for the task" required></textarea>
+                    </div>
+                    <div id="collaborativeSection" class="collaborative-section">
+                        <p>Collaboration</p>
+                    </div>
+                    <div class="nav-btn-container">
+                        <span id="stepbackOneBtn" class="prev-btn material-icons material-icons-outlined">
+                            navigate_before
+                        </span>
+                        <span id="stepTwoBtn" class="next-btn material-icons material-icons-outlined">
+                            navigate_next
+                        </span>
+                    </div>
                 </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
+                <div id="thirdStep" class="modal-step">
+                    <div class="modal-input-container">
+                        <label class="modal-label-name" for="newTaskStartTime">Start Time</label>
+                        <input class="modal-input" type="datetime-local" id="newTaskStartTime" value="<%= new Date().toISOString().slice(0, -8) %>" required>
+                    </div>
+                    <div class="modal-input-container">
+                        <label class="modal-label-name" for="newTaskEndTime">End Time</label>
+                        <input class="modal-input" type="datetime-local" id="newTaskEndTime" value="<%= new Date().toISOString().slice(0, -8) %>" required>
+                    </div>
+                    <div class="modal-footer">
+                        <span id="stepbackTwoBtn" class="prev-btn material-icons material-icons-outlined">
+                            navigate_before
+                        </span>
+                        <button id="newTaskSubmitButton" class="submit-btn">Save</button>
+                    </div>
                 </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
-                </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
-                </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
-                </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
-                </div>
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
-                </div>
-
-                <div class="task-card">
-                    <h4 class="task-heading"><span class="bullet">•</span>Design</h4>
-                    <p class="task-description">Designing the dashboard for Combinate project (individually).
-                    </p>
-                    <div class="members-list"></div>
-                </div>
-
-            </div>
-            <div class="list">
-
-            </div>
-            <div class="list">
-
             </div>
         </div>
     </div>
+<script src="javascript/todoPage.js"></script>
 <%- include('layouts/foot-layout') %> 

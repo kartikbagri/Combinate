@@ -26,14 +26,14 @@ closeAddCodingSiteModal.addEventListener('click', () => {
 })
 
 codingSitesList.addEventListener('click', (event) => {
-    if(event.target.classList.contains('coding-site')) {
-        const index = newCodingSites.indexOf(event.target.id);
+    if(event.target.closest('.coding-site')) {
+        const index = newCodingSites.indexOf(event.target.closest('.coding-site').id);
         if(index != -1) {
-            event.target.classList.remove('active-site');
+            event.target.closest('.coding-site').classList.remove('active-site');
             newCodingSites.splice(index, 1);
         } else {
-            event.target.classList.add('active-site');
-            newCodingSites.push(event.target.id);
+            event.target.closest('.coding-site').classList.add('active-site');
+            newCodingSites.push(event.target.closest('.coding-site').id);
         }
     }
 })
@@ -89,17 +89,6 @@ const createContestCard = (contest) => {
     return HTMLText;
 }
 
-if(contests.length == 0) {
-    // const HTMLText = 'Upcoming contests for various websites are shown here. Tap + icon to select sites of your choice';
-    // document.getElementsByClassName('schedule-section')[0].insertAdjacentHTML('afterbegin', HTMLText);
-} else {
-    contests.forEach(contest => {
-        const HTMLText = createContestCard(contest);
-        addContestCard(HTMLText);
-    });
-}
-
-updateCodingSites();
 
 new Calendar({
     id: "#color-calendar"
@@ -110,4 +99,16 @@ var bar = new ldBar(".chart", {
     "stroke-width": 8,
     "preset": "circle",
     "value": 65
-   });
+});
+
+updateCodingSites();
+
+if(contests.length == 0) {
+    // const HTMLText = 'Upcoming contests for various websites are shown here. Tap + icon to select sites of your choice';
+    // document.getElementsByClassName('schedule-section')[0].insertAdjacentHTML('afterbegin', HTMLText);
+} else {
+    contests.forEach(contest => {
+        const HTMLText = createContestCard(contest);
+        addContestCard(HTMLText);
+    });
+}
