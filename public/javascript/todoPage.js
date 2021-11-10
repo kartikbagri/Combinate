@@ -194,7 +194,7 @@ const deleteCategory = async (category) => {
     await axios.delete(`/api/tasks/category/${category}`)
     .catch(err => console.log(err));
     closeModal('deleteCategory');
-    document.getElementById(category).remove();
+    location.reload();
 }
 
 const completeTask = async (taskId) => {
