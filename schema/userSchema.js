@@ -24,13 +24,21 @@ const userSchema = new mongoose.Schema({
         type: [String],
         default: ['codeforces']
     },
-    tasks: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}],
+    tasks: [{
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Task'
-    },
+    }],
     categories: {
         type: [String]
-    }
+    },
+    following: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    followers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 userSchema.statics.findOrCreate = async function(query) {

@@ -215,7 +215,7 @@ const renderTasks = async () => {
     const tasks = res.filter(task => {
         return task.isCompleted === false;
     });
-    const dailyTasks = tasks.filter(task => new Date(task.startTime).setHours(0, 0, 0, 0) <= new Date().setHours(0, 0, 0, 0) && new Date(task.endTime).setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0));
+    const dailyTasks = tasks.filter(task => (new Date(task.startTime).setHours(0, 0, 0, 0) <= new Date().setHours(0, 0, 0, 0) && new Date(task.endTime).setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0)) || (new Date(task.endTime).setHours(0, 0, 0, 0) <= new Date().setHours(0, 0, 0, 0)));
     dailyTasks.forEach(task => {
         if(!document.getElementById(task.category)) {
             renderTab(task.category);

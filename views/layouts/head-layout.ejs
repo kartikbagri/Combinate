@@ -75,10 +75,31 @@
             </div>
             <div class="user-container">
                 <h2 class="user-container__name"><%= `${locals.userLoggedIn.name}`%> </h2>
-                <div class="user-container__icon-container">
+                <div id="userContainerIcon" class="user-container__icon-container">
                     <img src="<%=locals.userLoggedIn.profilePic||'images/profilePic.jpeg'%>" alt="">
                 </div>
             </div>
         </nav>
+        <div id="managerPopup" class="manager-popup">
+            <div class="manager-popup-top">
+                <h3 class="manager-popup-icon__name"><%= `${locals.userLoggedIn.name}`%></h3>
+                <div class="manager-popup-top__img-container">
+                    <img class="manager-popup-top__img" src="<%=locals.userLoggedIn.profilePic||'images/profilePic.jpeg'%>" alt="">
+                </div>
+            </div>
+            <div class="manager-popup-down">
+                <h2 class="manager-popup-down__email"><%= `${locals.userLoggedIn.email}`%></h2>
+                <div class="manager-popup-down__options-container">
+                    <a class="settings">
+                        <!-- <span class="option-icon settings-icon material-icons material-icons-outlined">settings</span>    -->
+                        <!-- <h3 class="settings-name">Profile</h3>                      -->
+                    </a>
+                    <a href="/logout" class="logout">
+                        <span class="option-icon logout-icon material-icons material-icons-outlined">logout</span>
+                        <h3 class="logout-name">Logout</h3>                     
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="main-content">
             <div class="back-style"></div>

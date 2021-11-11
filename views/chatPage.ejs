@@ -1,43 +1,67 @@
 <%- include('layouts/head-layout') %>
 
-    <div class="chats-container">
-        <div class="users-pane">
-            <div class="search">
-                <img src="images/loupe.png" alt="">
-                <h2>Search</h2>
+<div class="chats-container">
+    <div class="back-style2"></div>
+    <div class="users-pane">
+        <div class="search">
+            <img src="images/loupe.png" alt="">
+            <h2>Search</h2>
+        </div>
+        <div class="users">
+            <div class="user-info">
+                <div class="pfp-container">
+                    <img class="pfp" src="images/profilePic.jpeg" alt="">
+                </div>
+                <h2>Jai Singhal</h2>
             </div>
-            <div class="users">
-                <div class="user-info">
-                    <div class="pfp-container">
-                        <img class="pfp" src="images/profilePic.jpeg" alt="">
-                    </div>
-                    <h2>Jai Singhal</h2>
+            <div class="user-info">
+                <div class="pfp-container">
+                    <img class="pfp" src="images/profilePic.jpeg" alt="">
                 </div>
                 <h2>Adwita Arora</h2>
+            </div>
+            <div class="user-info">
+                <div class="pfp-container">
+                    <img class="pfp" src="images/profilePic.jpeg" alt="">
+                </div>
                 <h2>Pratyush Gupta</h2>
-                <h2>Rinav Gupta</h2>
-                <h2>Soham Kundu</h2>
             </div>
-        </div>
-        <div class="chats-pane">
-            <div class="current-name">
-                <h1>Jai Singhal</h1>
-            </div>
-
-            <div class="chats">
-
-            </div>
-            <div class="message-bar">
-                <div class="input-bar">
-                    <h2>Message...</h2>
+            <div class="user-info">
+                <div class="pfp-container">
+                    <img class="pfp" src="images/profilePic.jpeg" alt="">
                 </div>
-                <div class="send-icon-container">
-                    <span class="material-icons material-icons-outlined">
-                        send
-                    </span>
+                <h2>Mukul Gupta</h2>
+            </div>
+            <div class="user-info">
+                <div class="pfp-container">
+                    <img class="pfp" src="images/profilePic.jpeg" alt="">
                 </div>
+                <h2>Priya Agarwal</h2>
             </div>
         </div>
     </div>
+    <div class="chats-pane">
+        <div class="current-name">
+            <div class="pfp-container">
+                <img class="pfp" src="images/profilePic.jpeg" alt="">
+            </div>
+            <h1 class="current-chat-name">Jai Singhal</h1>
+        </div>
 
-    <%- include('layouts/foot-layout') %>
+        <div class="chats">
+
+        </div>
+        <div class="message-bar">
+            <div class="input-bar">
+                <h2>Message...</h2>
+            </div>
+            <div class="send-icon-container">
+                <span class="material-icons material-icons-outlined">
+                    send
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="javascript/common.js"></script>
+<%- include('layouts/foot-layout') %>

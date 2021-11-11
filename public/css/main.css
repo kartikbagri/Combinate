@@ -94,11 +94,134 @@ body {
     margin: 0 20px;
     overflow: hidden;
     width: 48px;
+    cursor: pointer;
 }
 
 .user-container__icon-container img {
     height: 100%;
     width: 100%;
+}
+
+.manager-popup {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    display: none;
+    top: 75px;
+    right: 35px;
+    border-radius: 8px;
+    z-index: 5;
+    align-items: center;
+    overflow: hidden;
+    border: 2px solid rgb(113, 113, 113);
+    /* box-shadow: rgba(178, 178, 189, 0.872) 0px 1px 20px 0px; */
+}
+
+.active-popup {
+    display: block;
+}
+
+.manager-popup-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 100px;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(114, 9, 183, 1) 0%, rgb(48, 6, 75) 40%, rgba(0, 0, 0, 1) 100%);
+    border-bottom: 2px solid rgb(169, 169, 169);
+    position: relative;
+}
+
+.manager-popup-down {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+.manager-popup-top__img-container {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid rgb(169, 169, 169);
+
+}
+
+.manager-popup-down__email {
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 50;
+    color:rgb(196, 196, 196);
+    border-bottom: 1px solid rgba(152, 152, 152, 0.434)
+}
+
+
+
+.manager-popup-top__img {
+    width: 100%;
+    height: 100%;
+}
+
+.manager-popup-icon__name {
+    margin-bottom: 30px;
+}
+
+.settings, .logout {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.logout, .setting {
+    text-decoration: none;
+}
+
+.settings:hover .settings-icon, .settings:hover .settings-name {
+    color: rgb(186, 117, 232);
+    transition: 0.2s;
+}
+
+.settings:hover .settings-name {
+    border-bottom: 1px solid rgb(186, 117, 232);
+}
+
+.logout:hover .logout-icon, .logout:hover .logout-name {
+    color: rgb(222, 45, 45);
+    transition: 0.5s;
+}
+
+.logout:hover .logout-name {
+    border-bottom: 1px solid rgb(222, 45, 45);
+}
+
+.option-icon {
+    font-size: 1.1rem;
+    font-weight: 100;
+    margin-right: 8px;
+}
+
+.manager-popup-down__options-container {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-evenly;
+}
+
+.settings-name, .logout-name {
+    font-weight: 100;
 }
 
 .sidebar {
@@ -567,7 +690,8 @@ body {
 }
 
 .new-button {
-    padding: 10px;
+    padding: 10px 20px;
+    border-radius: 30px;
 }
 
 .lists-section__top-section-links:hover{
@@ -977,7 +1101,19 @@ textarea {
     display: flex;
     height: 100%;
     padding: 20px;
+    /* background: linear-gradient(0deg, #000000, #000000); */
+    /* filter: blur(100px); */
+    /* z-index: -5; */
+}
+
+.back-style2 {
+    position: fixed;
+    width: 100%;
+    height: 90%;
+    bottom: 0px;
     background: linear-gradient(0deg, #000000, #000000);
+    filter: blur(50px);
+    z-index: -1;
 }
 
 .users-pane {
@@ -988,19 +1124,31 @@ textarea {
 
 .search {
     display: flex;
+    /* height: 10%; */
     flex: 1;
-    padding-left: 10px;
+    padding: 10px;
     background: rgba(222, 226, 255, 0.42);
     border-radius: 100px;
 }
 
+.search h2{
+    color: rgb(206, 205, 205);
+    font-size: 1rem;
+    font-weight: 100;
+}
+
 .users {
     display: flex;
-    flex: 10;
+    flex: 25;
     flex-direction: column;
-    /* padding-left: 20px; */
     justify-content: space-evenly;
     font-weight: 100;
+    /* height: 10%; */
+}
+
+.users h2{
+    font-weight: 100;
+    font-size: 1.5rem;
 }
 
 .chats-pane {
@@ -1016,6 +1164,7 @@ textarea {
 .user-info {
     display: flex;
     align-items: center;
+    height: 10%;
 }
 
 .pfp-container {
@@ -1040,7 +1189,6 @@ textarea {
     width: 90%;
     height: 10%;
     background: white;
-    /* border: 1px solid #DADADA; */
     border-radius: 35px;
 }
 
@@ -1052,20 +1200,27 @@ textarea {
 }
 
 .current-name {
+    display: flex;
     align-self: flex-start;
     padding-left: 40px;
 }
 
+.current-chat-name{
+    margin-left: 10px;
+}
+
 .send-icon-container {
     display: flex;
+    align-items: center;
     justify-content: center;
     background-color: rgba(114, 9, 183);;
     border-radius: 50%;
-    width: 5%;
+    width: 40px;
+    height: 40px;
 }
 
 .input-bar {
-    width: 92%;
+    width: 90%;
     color: grey;
     padding: 15px;
 }
@@ -1079,7 +1234,8 @@ textarea {
 .users-container {
     display: flex;
     flex-wrap: wrap;
-    background: linear-gradient(180deg, #131126 0%, rgba(0, 0, 0, 0) 100%);
+    height: 100%;
+    /* background: linear-gradient(180deg, #131126 0%, rgba(0, 0, 0, 0) 100%); */
 }
 
 .user-card {
@@ -1098,8 +1254,8 @@ textarea {
     align-items: center;
     justify-content: space-evenly;
     margin-right: 10px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-bottom: 10px;
     overflow: hidden;
@@ -1111,6 +1267,7 @@ textarea {
 }
 
 .user-name {
+    font-size: 1.8rem;
     margin-bottom: 5px;
 }
 
@@ -1123,6 +1280,6 @@ textarea {
 .user-card__info h3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
 }

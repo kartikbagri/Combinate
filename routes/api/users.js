@@ -4,6 +4,15 @@ const User = require('../../schema/userSchema');
 // ********** Using Modules **********
 const router = express.Router();
 
+router.get('/all', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (err) {
+        res.json({ message: err });
+    }
+})
+
 router.patch('/codingSites/:id', async (req, res) => {
     const userId = req.params.id;
     await User.findByIdAndUpdate(userId, {codingSites: req.body.codingSites})

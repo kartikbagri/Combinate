@@ -105,7 +105,13 @@ app.use('/users', middleware.isLoggedIn, searchRoute);
 
 // Chats Route
 const chatsRoute = require('./routes/chatsRoute');
+const { transformAuthInfo } = require('passport');
 app.use('/chats', middleware.isLoggedIn, chatsRoute);
+
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
 
 // Articles Route
 // const articlesRoute = require('./routes/articleRoute');
