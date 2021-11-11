@@ -104,8 +104,8 @@ app.use('/users', middleware.isLoggedIn, searchRoute);
 // app.use('/courses', coursesRoute);
 
 // Chats Route
-// const chatsRoute = require('./routes/chatsRoute');
-// app.use('/chats', chatsRoute);
+const chatsRoute = require('./routes/chatsRoute');
+app.use('/chats', middleware.isLoggedIn, chatsRoute);
 
 // Articles Route
 // const articlesRoute = require('./routes/articleRoute');

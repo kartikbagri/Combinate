@@ -70,7 +70,7 @@ router.get('/:id', async (req, res) => {
 router.delete('/category/:categoryName', async (req, res) => {
     const categoryName = req.params.categoryName;
     const userId = req.user._id;
-    await Task.deleteMany({category: categoryName})
+    await Task.deleteMany({category: categoryName, isCompleted: false})
     .catch(err => {
         console.log(err);
         res.sendStatus(400).json(err);

@@ -5,15 +5,15 @@
                     <span class="update-daily-tasks-text">Update Tasks</span>
                     <h2 class="section-name">Daily Goals</h2>
                     <ul id="dailyTasksTab" class="tabs">
-                        <li class="tab plus-tab">+</li>
+                        <li id="addCategoryTabBtn" class="tab plus-tab">+</li>
                     </ul>
                     <div id="dailyGoals" class="goals">
-                        
+
                     </div>
                 </div>
                 <div class="top-section__right">
                     <div class="calendar-section">
-                        <span class="event-add-btn material-icons material-icons-outlined">add</span> 
+                        <span id="newTaskBtn" class="event-add-btn material-icons material-icons-outlined">add</span> 
                         <div id="color-calendar"></div>
                     </div>
                 </div>
@@ -46,6 +46,92 @@
         </div>
     </div>
 <div class="backdrop"></div>
+<div id="newTaskModal" class="modal modal-padding-remove">
+    <h2 class="modal-title">New Task</h2>
+    <i id="newTaskCloseModal" class="close-modal fas fa-times"></i>
+    <div class="modal-body">
+        <div id="modalStepsContainer" class="modal-steps-container">
+            <div id="firstStep" class="modal-step">
+                <div class="modal-input-container">
+                    <div class="modal-input-container category-select">
+                        <label class="modal-label-name" for="newTaskCategory">Choose a category:</label>
+                        <select class="modal-drop-down" name="category" id="newTaskCategory">
+                            <% locals.userLoggedIn.categories.forEach(category => { %>
+                                <option value="<%= category %>"><%= category %></option>
+                            <% }); %> 
+                        </select>
+                    </div>
+                    <div class="radio-container">
+                        <input class="radio-btn" type="radio" name="isCollaborative" id="radioCollaborative" value="Yes">
+                        <label id="radioLabelCollaborative" class="radio-label" for="radioCollaborative">Collaborative</label><br>
+                    </div>
+                    <div class="radio-container radio-checked">
+                        <input class="radio-btn" type="radio" name="isCollaborative" id="radioIndividual" value="No" checked>
+                        <label id="radioLabelIndividual" class="radio-label" for="radioIndividual">Individual</label><br>
+                    </div>
+                </div>
+                <div class="nav-btn-container">
+                    
+                    <span id="stepOneBtn" class="next-btn material-icons material-icons-outlined">
+                        navigate_next
+                    </span>
+                </div>
+            </div>
+            <div id="secondStep" class="modal-step">
+                <div class="modal-input-container">
+                    <label for="newTaskTitle" class="modal-label-name">Task Title</label>
+                    <input class="modal-input" type="text" id="newTaskTitle" placeholder="Title for new task" required>
+                </div>
+                <div class="modal-input-container">
+                    <label for="newTaskDescription" class="modal-label-name">Task Description</label>
+                    <textarea class="modal-input" type="text" id="newTaskDescription" placeholder="Description for the task" required></textarea>
+                </div>
+                <div id="collaborativeSection" class="collaborative-section">
+                    <p>Collaboration</p>
+                </div>
+                <div class="nav-btn-container">
+                    <span id="stepbackOneBtn" class="prev-btn material-icons material-icons-outlined">
+                        navigate_before
+                    </span>
+                    <span id="stepTwoBtn" class="next-btn material-icons material-icons-outlined">
+                        navigate_next
+                    </span>
+                </div>
+            </div>
+            <div id="thirdStep" class="modal-step">
+                <div class="modal-input-container">
+                    <label class="modal-label-name" for="newTaskStartTime">Start Time</label>
+                    <input class="modal-input" type="datetime-local" id="newTaskStartTime" value="" required>
+                </div>
+                <div class="modal-input-container">
+                    <label class="modal-label-name" for="newTaskEndTime">End Time</label>
+                    <input class="modal-input" type="datetime-local" id="newTaskEndTime" value="" required>
+                </div>
+                <div class="modal-footer">
+                    <span id="stepbackTwoBtn" class="prev-btn material-icons material-icons-outlined">
+                        navigate_before
+                    </span>
+                    <button id="newTaskSubmitButton" class="submit-btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="newCategoryModal" class="modal">
+    <h2 class="modal-title">New Category</h2>
+    <i id="newCategoryCloseModal" class="close-modal fas fa-times"></i>
+    <div class="modal-body">
+        <div class="modal-padding">
+            <div class="modal-input-container">
+                <label for="newCategoryInput" class="modal-label-name">Category Title</label>
+                <input class="modal-input" type="text" id="newCategoryInput" placeholder="Title for new Category" required>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="newCategorySubmitButton" class="submit-btn">Save</button>
+    </div>
+</div>
 <div id="addCodingSiteModal" class="modal">
     <h2 class="modal-title">Select from websites</h2>
     <i id="addCodingSiteCloseModal" class="close-modal fas fa-times"></i>
