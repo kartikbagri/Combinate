@@ -252,6 +252,7 @@ body {
 }
 
 .goal-section {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 65%;
@@ -263,6 +264,24 @@ body {
     padding: 20px;
     padding-top: 10px;
 }                   
+
+.update-daily-tasks-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.update-daily-tasks-btn:hover {
+    color: rgb(157, 0, 255);
+}
+
+.update-daily-tasks-text {
+    position: absolute;
+    right: 20px;
+    top: 45px;
+    font-size: 0.9rem;
+}
 
 .tabs {
     margin-top: 15px;
@@ -279,6 +298,7 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    cursor: pointer;
 }
 
 .plus-tab {
@@ -288,20 +308,34 @@ body {
     background: none;
 }
 
-.plus-tab:hover {
+.plus-tab:hover{
     border-radius: 50%;
 }
 
-.tab:hover {
-    cursor: pointer;
+.tab:hover:not(.active-tab) {
     background: rgba(65, 64, 64, 0.4);
 }
 
 .goals {
     border-radius: 5px;
+    padding: 10px;
     border-top: 2px solid #330A74;
     flex: 1;
     background: linear-gradient(0deg, rgba(65, 64, 64, 0.2), rgba(65, 64, 64, 0.2)), linear-gradient(257.99deg, rgba(51, 8, 103, 0.5) 5.25%, rgba(51, 8, 103, 0.25) 23.03%, rgba(21, 17, 26, 0) 46.43%, rgba(71, 118, 230, 0.17) 101.38%, rgba(64, 79, 185, 0.198256) 101.38%, rgba(61, 63, 167, 0.209975) 101.38%);
+}
+
+.daily-goals-list {
+    font-size: 1.2rem;
+    list-style: none;
+    padding: 0 10px;
+}
+
+.daily-goal-item {
+    padding: 5px;
+}
+
+.check-goal {
+    margin-right: 10px;
 }
 
 .active-tab {

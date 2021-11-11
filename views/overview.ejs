@@ -1,14 +1,13 @@
 <%- include('layouts/head-layout') %> 
             <div class="top-section">
-                <div class="goal-section">
+                <div id="goalSection" class="goal-section">
+                    <span id="updateDailyTasksBtn" class="update-daily-tasks-btn material-icons material-icons-outlined">update</span>
+                    <span class="update-daily-tasks-text">Update Tasks</span>
                     <h2 class="section-name">Daily Goals</h2>
-                    <ul class="tabs">
-                        <li class="active-tab tab">Home</li>
-                        <li class="tab">Grocery</li>
-                        <li class="tab">Office</li>
+                    <ul id="dailyTasksTab" class="tabs">
                         <li class="tab plus-tab">+</li>
                     </ul>
-                    <div class="goals">
+                    <div id="dailyGoals" class="goals">
                         
                     </div>
                 </div>

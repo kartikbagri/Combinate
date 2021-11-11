@@ -1,19 +1,81 @@
 // Contests Section
+const categories = userLoggedIn.categories;
+const dailyGoals = document.getElementById('dailyGoals');
+let dailyTasks = [];
+const dailyTasksTab = document.getElementById('dailyTasksTab');
 const addCodingSite = document.getElementById('addCodingSite');
 const closeAddCodingSiteModal = document.getElementById('addCodingSiteCloseModal');
 const codingSitesList = document.getElementById('codingSitesList');
 const currCodingSites = userLoggedIn.codingSites;
 const newCodingSites = [...currCodingSites];
 const addCodingSiteSubmitButton = document.getElementById('addCodingSiteSubmitButton');
+const goalSection = document.getElementById('goalSection');
+const updateDailyTasksBtn = document.getElementById('updateDailyTasksBtn');
+
+dailyTasksTab.addEventListener('click', (e) => {
+    if (e.target.classList.contains('tab') && !e.target.classList.contains('plus-tab')) {
+        const prevCategory = dailyTasksTab.querySelector('.active-tab').innerText;
+        dailyTasksTab.querySelector('.active-tab').classList.remove('active-tab');
+        e.target.classList.add('active-tab');
+        document.getElementById(prevCategory).classList.add('hidden');
+        document.getElementById(e.target.innerText).classList.remove('hidden');
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if(e.target.classList.contains('check-goal')) {
+        const taskId = e.target.id;
+        if(e.target.checked) {
+            dailyTasks.push(taskId);
+        } else {
+            dailyTasks.splice(dailyTasks.indexOf(taskId), 1);
+        }
+        console.log(dailyTasks);
+    }
+});
+
+updateDailyTasksBtn.addEventListener('click', async () => {
+    await axios.patch(`/api/tasks/completetasks/many`, {tasks: dailyTasks})
+    .catch(err => console.log(err));
+    location.reload();
+})
 
 const updateCodingSites = () => {
     currCodingSites.forEach(site => {
         document.getElementById(site).classList.add('active-site');
-        
     });
 }
 
-addCodingSite.addEventListener('click', (event) => {
+const renderTab = (category) => {
+    dailyTasksTab.insertAdjacentHTML('afterbegin', `<li class="tab">${category}</li>`);
+        dailyGoals.insertAdjacentHTML('beforeend', `
+        <ul class="hidden daily-goals-list" id=${category}></ul>
+    `);
+}
+
+const renderTasks = async () => {
+    const result = await axios.get(`/api/tasks/${userLoggedIn._id}`);
+    const res = result.data;
+    const tasks = res.filter(task => {
+        return task.isCompleted === false;
+    });
+    const dailyTasks = tasks.filter(task => (task.startTime <= new Date().toISOString() && task.endTime >= new Date().toISOString()))
+    dailyTasks.forEach(task => {
+        if(!document.getElementById(task.category)) {
+            renderTab(task.category);
+        }
+        console.log(task.category);
+        document.getElementById(task.category).insertAdjacentHTML('beforeend', `
+        <li class="daily-goal-item"><input id="${task._id}" class="check-goal" type="checkbox">${task.title}</li>
+        `);
+    });
+    if(!dailyTasksTab.children[0].classList.contains('plus-tab')) {
+        dailyTasksTab.children[0].classList.add('active-tab');
+        document.getElementById(dailyTasksTab.children[0].innerText).classList.remove('hidden');
+    }
+}
+
+addCodingSite.addEventListener('click', () => {
     openModal('addCodingSite');
 });
 
@@ -90,18 +152,31 @@ const createContestCard = (contest) => {
 }
 
 
+const renderBar = async () => {
+    const result = await axios.get(`/api/tasks/${userLoggedIn._id}`);
+    const res = result.data;
+    const dailyTasks = res.filter(task => (task.startTime <= new Date().toISOString() && task.endTime >= new Date().toISOString()))
+    const tasks = dailyTasks.filter(task => {
+        return task.isCompleted === true;
+    });
+    console.log(res);
+    console.log(tasks);
+    const value = tasks.length/dailyTasks.length;
+    const bar = new ldBar(".chart", {
+        "stroke": 'rgba(114, 9, 183)',
+        "stroke-width": 8,
+        "preset": "circle",
+        "value": Math.round(value*100)
+    });
+}
+
 new Calendar({
     id: "#color-calendar"
 });
 
-var bar = new ldBar(".chart", {
-    "stroke": 'rgba(114, 9, 183)',
-    "stroke-width": 8,
-    "preset": "circle",
-    "value": 65
-});
-
 updateCodingSites();
+renderTasks();
+renderBar();
 
 if(contests.length == 0) {
     // const HTMLText = 'Upcoming contests for various websites are shown here. Tap + icon to select sites of your choice';

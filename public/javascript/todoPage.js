@@ -12,10 +12,8 @@ const deleteCategorySubmitButton = document.getElementById('deleteCategorySubmit
 const completeTaskSubmitButton = document.getElementById('completeTaskSubmitButton');
 const completeTaskCloseModal = document.getElementById('completeTaskCloseModal');
 const deleteCategoryCloseModal = document.getElementById('deleteCategoryCloseModal');
-
 const newTaskCloseModal = document.getElementById('newTaskCloseModal');
 const newTaskSubmitButton = document.getElementById('newTaskSubmitButton');
-
 const stepOneBtn = document.getElementById('stepOneBtn');
 const stepTwoBtn = document.getElementById('stepTwoBtn');
 const firstStep = document.getElementById('firstStep');
@@ -23,12 +21,10 @@ const secondStep = document.getElementById('secondStep');
 const thirdStep = document.getElementById('thirdStep');
 const stepbackOneBtn = document.getElementById('stepbackOneBtn');
 const stepbackTwoBtn = document.getElementById('stepbackTwoBtn');
-
 const radioLabelIndividual = document.getElementById('radioLabelIndividual');
 const radioLabelCollaborative = document.getElementById('radioLabelCollaborative');
 const radioIndividual = document.getElementById('radioIndividual');
 const radioCollaborative = document.getElementById('radioCollaborative');
-
 const collaborativeSection = document.getElementById('collaborativeSection');
 
 stepOneBtn.addEventListener('click', () => {

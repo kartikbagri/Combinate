@@ -14,4 +14,14 @@ router.patch('/codingSites/:id', async (req, res) => {
     res.sendStatus(200);
 });
 
+router.patch('/:id', async (req, res) => {
+    const userId = req.params.id;
+    await User.findByIdAndUpdate(userId, req.body)
+    .catch(err => {
+        console.log(err);
+        res.sendStatus(400);
+    })
+    res.sendStatus(200);
+})
+
 module.exports = router;
