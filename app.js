@@ -14,6 +14,7 @@ const app = express();
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.json());
 
 const sessionConfig = {
     secret: process.env.SESSION_SECRET,
@@ -54,9 +55,6 @@ mongoose.connect('mongodb://localhost:27017/combinateDatabase').then(() => {
 }).catch((err) => {
     console.log(`Error setting up connection to database: ${err}`);
 });
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 app.use((req, res, next) => {
     res.locals.userLoggedIn = req.user;

@@ -5,7 +5,7 @@ const axios = require('axios');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const payload = { title: 'Overview' };
+    const payload = { title: 'Overview', userloggedIn: req.user };
     const [quoteResult, contestsResult] = await Promise.allSettled([getQuote(), getContests(req.user)]);
     // Thought of the day section
     updateQuoteResult(payload, quoteResult);

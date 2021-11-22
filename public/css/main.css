@@ -110,7 +110,7 @@ body {
     top: 75px;
     right: 35px;
     border-radius: 8px;
-    z-index: 5;
+    z-index: 6;
     align-items: center;
     overflow: hidden;
     border: 2px solid rgb(113, 113, 113);
@@ -753,10 +753,6 @@ body {
     transition: 0.5s;
 }
 
-.hidden {
-    display: none;
-}
-
 .modal-steps-container {
     display: flex;
 }
@@ -1247,6 +1243,7 @@ textarea {
     background: rgba(255, 255, 255, 0.3);
     padding: 20px;
     margin: 30px 15px;
+    height: 300px;
 }
 
 .user-img-container {
@@ -1282,4 +1279,27 @@ textarea {
     font-weight: 300;
     font-size: 1rem;
     text-align: left;
+}
+
+.follow-btn {
+    background-color: blue;
+}
+
+.following {
+    background-color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.search-results {
+    position: absolute;
+    background: linear-gradient(180deg, #413A80 0%, #000000 100%);
+    width: 80%;
+    height: 85%;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    z-index: 5;
 }

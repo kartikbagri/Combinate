@@ -9,7 +9,37 @@ router.get('/all', async (req, res) => {
         const users = await User.find();
         res.json(users);
     } catch (err) {
-        res.json({ message: err });
+        res.json(err);
+    }
+});
+
+router.patch('/follow', async (req, res) => {
+    const data = req.body;
+    if(data.isFollowing) {
+        try {
+            await User.findByIdAndUpdate(data.userId, { $pull: { following: data.targetUserId }});
+            await User.findByIdAndUpdate(data.targetUserId, { $pull: { followers: data.userId }});
+            res.sendStatus(200);
+        } catch (err) {
+            res.status(400).json(err);
+        }
+    } else {
+        try {
+            await User.findByIdAndUpdate(data.userId, { $push: { following: data.targetUserId }});
+            await User.findByIdAndUpdate(data.targetUserId, { $push: { followers: data.userId }});
+            res.sendStatus(200);
+        } catch (err) {
+            res.status(400).json(err);
+        }
+    }
+});
+
+router.get('/search/', async (req, res) => {
+    try {
+        const users = await User.find({ $or: [{username: { $regex: req.query.q, $options: 'i' }}, {name: { $regex: req.query.q, $options: 'i' }}]});
+        res.json(users);
+    } catch (err) {
+        res.json(err);
     }
 })
 
