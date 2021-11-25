@@ -16,6 +16,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 
+const http = require('http');
+const socketio = require('socket.io');
+const server = http.createServer(app);
+const io = socketio(server);
+
 const sessionConfig = {
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -93,9 +98,20 @@ app.use('/api/users', usersApiRoute);
 const tasksApiRoute = require('./routes/api/tasks');
 app.use('/api/tasks', tasksApiRoute);
 
+const chatsApiRoute = require('./routes/api/chats');
+app.use('/api/chats', chatsApiRoute);
+
+const messagesApiRoute = require('./routes/api/messages');
+app.use('/api/messages', messagesApiRoute);
+
 // Search Route
 const searchRoute = require('./routes/searchRoute');
 app.use('/users', middleware.isLoggedIn, searchRoute);
+
+// UserProfilePage Route
+const userProfileRoute = require('./routes/userProfileRoute');
+app.use('/userProfile', middleware.isLoggedIn, userProfileRoute);
+
 
 // Courses Route
 // const coursesRoute = require('./routes/coursesRoute');
@@ -116,13 +132,15 @@ app.get('/logout', (req, res) => {
 // app.use('/articles', articlesRoute);
 
 // ********** Server listening on port: 30000 **********
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+io.on('connection', (socket) => {
+    socket.on('join-chat-room', (chatId) => {
+        socket.join(chatId);
+    });
+    socket.on('message-received', (data) => {
+        socket.to(data.chatId).emit('message-received', data.message);
+    });
 });
 
-// const io = require('socket.io') (server);
-
-// io.on('connection', socket => {
-    
-// });
-
+server.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});

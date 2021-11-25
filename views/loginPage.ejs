@@ -19,11 +19,11 @@
         <form action="/login" method="POST" class="form">
             <div class="input-container">
                 <label for="loginUsername" class="label-name">Email</label>
-                <input id="loginUsername" type="text" placeholder="Email or Username" name="username" autocomplete="off" required>
+                <input id="loginUsername" value="adwita.arora" type="text" placeholder="Email or Username" name="username" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label for="password" class="label-name">Password</label>
-                <input id="password" type="password" placeholder="Password" name="password" required>
+                <input id="password" value="password" type="password" placeholder="Password" name="password" required>
             </div>
             <% if(locals.error.length) { %>
                     <p class="message-error">

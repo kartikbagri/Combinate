@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String,
-        default: ''
+        default: 'images/profilePic.jpeg'
     },
     codingSites: {
         type: [String],

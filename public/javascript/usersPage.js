@@ -10,4 +10,21 @@ const renderUsers = async () => {
     });
 }
 
+usersContainer.addEventListener('click', (e) => {
+    if(e.target.closest('.follow-btn')) {
+        const id = e.target.id;
+        const isFollowing = e.target.classList.contains('following');
+        axios.patch(`/api/users/follow`, {userId: userLoggedIn._id, targetUserId: id, isFollowing: isFollowing})
+        .then(() => {
+            if(isFollowing) {
+                e.target.innerText = 'Follow';
+            } else {
+                e.target.innerText = 'Following';
+            }
+            e.target.classList.toggle('following');
+        })
+        .catch(err => console.log(err));
+    }
+});
+
 renderUsers();

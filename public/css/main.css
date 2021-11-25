@@ -185,7 +185,7 @@ body {
     cursor: pointer;
 }
 
-.logout, .setting {
+.logout, .settings {
     text-decoration: none;
 }
 
@@ -1134,12 +1134,14 @@ textarea {
 }
 
 .users {
+    padding-top: 20px;
     display: flex;
     flex: 25;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     font-weight: 100;
     /* height: 10%; */
+    overflow-y: scroll;
 }
 
 .users h2{
@@ -1152,6 +1154,7 @@ textarea {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     height: 100%;
     padding: 20px;
     flex: 3;
@@ -1160,7 +1163,12 @@ textarea {
 .user-info {
     display: flex;
     align-items: center;
-    height: 10%;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.user-info:hover {
+    background-color: rgba(187, 187, 187, 0.427); 
 }
 
 .pfp-container {
@@ -1183,16 +1191,96 @@ textarea {
     display: flex;
     align-items: center;
     width: 90%;
-    height: 10%;
+    padding: 5px;
     background: white;
     border-radius: 35px;
+    justify-content: space-between;
+}
+
+.chats-backdrop {
+    height: 70%;
+    width: 100%;
+    position: absolute;
+    bottom: 100px;
+    filter: blur(100px);
+    z-index: -1;
+    background: linear-gradient(180deg, #302B63 0%, rgba(48, 43, 99, 0.46) 32.81%, rgba(24, 22, 49, 0.732126) 70.83%, #302B63 98.96%);
+
 }
 
 .chats {
-    height: 70%;
+    height: 60vh;
     width: 100%;
-    background: linear-gradient(180deg, #302B63 0%, rgba(48, 43, 99, 0.46) 32.81%, rgba(24, 22, 49, 0.732126) 70.83%, #302B63 98.96%);
-    filter: blur(100px);
+    padding: 0 20px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.message-container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin: 2px 0;
+}
+
+.message-pfp {
+    width: 30px;
+    height: 30px;
+    align-self: flex-end;
+}
+
+.message {
+    max-width: 90%;
+    border-radius: 20px;
+    padding: 5px 10px;
+    
+}
+
+.message-container-sent {
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.message-received {
+    background-color: #4776E6;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+.message-sent {
+    background-color: #7400B8;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.no-visible {
+    visibility: hidden;
+}
+
+.received-first {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 2px;
+}
+
+.received-last {
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 2px;
+}
+
+.sent-first {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 2px;
+}
+
+.first-last {
+    border-radius: 20px;
+}
+
+.sent-last {
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 2px;
 }
 
 .current-name {
@@ -1216,9 +1304,12 @@ textarea {
 }
 
 .input-bar {
+    border-radius: 35px;
+    border: none;
     width: 90%;
-    color: grey;
-    padding: 15px;
+    color: black;
+    padding: 5px 15px;
+    outline: none;
 }
 
 .input-bar h2 {
@@ -1302,4 +1393,11 @@ textarea {
     border: 2px solid white;
     border-radius: 10px;
     z-index: 5;
+    overflow-x: scroll;
+}
+
+.no-messages {
+    color:rgb(113, 113, 113);
+    text-align: center;
+    font-size: 1.1rem;
 }

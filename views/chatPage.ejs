@@ -7,55 +7,25 @@
             <img src="images/loupe.png" alt="">
             <h2>Search</h2>
         </div>
-        <div class="users">
-            <div class="user-info">
-                <div class="pfp-container">
-                    <img class="pfp" src="images/profilePic.jpeg" alt="">
-                </div>
-                <h2>Jai Singhal</h2>
-            </div>
-            <div class="user-info">
-                <div class="pfp-container">
-                    <img class="pfp" src="images/profilePic.jpeg" alt="">
-                </div>
-                <h2>Adwita Arora</h2>
-            </div>
-            <div class="user-info">
-                <div class="pfp-container">
-                    <img class="pfp" src="images/profilePic.jpeg" alt="">
-                </div>
-                <h2>Pratyush Gupta</h2>
-            </div>
-            <div class="user-info">
-                <div class="pfp-container">
-                    <img class="pfp" src="images/profilePic.jpeg" alt="">
-                </div>
-                <h2>Mukul Gupta</h2>
-            </div>
-            <div class="user-info">
-                <div class="pfp-container">
-                    <img class="pfp" src="images/profilePic.jpeg" alt="">
-                </div>
-                <h2>Priya Agarwal</h2>
-            </div>
+        <div id="chatsList" class="users">
+            
         </div>
     </div>
-    <div class="chats-pane">
+    <div id="chatContainer" class="chats-pane">
         <div class="current-name">
             <div class="pfp-container">
-                <img class="pfp" src="images/profilePic.jpeg" alt="">
+                <img id="chatIcon" class="pfp hidden">
             </div>
-            <h1 class="current-chat-name">Jai Singhal</h1>
+            <h1 id="currentChatName" class="current-chat-name"></h1>
         </div>
 
-        <div class="chats">
-
+        <p id="noMessageContainer" class="no-messages hidden">No messages yet</p>
+        <div class="chats-backdrop"></div>
+        <div id="messageContainer" class="chats">
         </div>
         <div class="message-bar">
-            <div class="input-bar">
-                <h2>Message...</h2>
-            </div>
-            <div class="send-icon-container">
+            <input id="messageContent" type="text" placeholder="Message..." class="input-bar">
+            <div id="sendMessageBtn" class="send-icon-container">
                 <span class="material-icons material-icons-outlined">
                     send
                 </span>
@@ -63,5 +33,7 @@
         </div>
     </div>
 </div>
+</div>
 <script src="javascript/common.js"></script>
+<script src="javascript/chatsPage.js"></script>
 <%- include('layouts/foot-layout') %>

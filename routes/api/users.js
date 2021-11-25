@@ -4,6 +4,23 @@ const User = require('../../schema/userSchema');
 // ********** Using Modules **********
 const router = express.Router();
 
+router.get('/user/:id', async (req, res) => {
+    const user = await User.findById(req.params.id)
+    .catch(err => {
+        res.status(400).send(err);
+    })
+    res.status(200).json(user);
+});
+
+router.get('/:id/following', async (req, res) => {
+    const user = await User.findById(req.params.id)
+    .populate('following')
+    .catch(err => {
+        res.status(400).send(err);
+    })
+    res.status(200).json(user.following);
+});
+
 router.get('/all', async (req, res) => {
     try {
         const users = await User.find();

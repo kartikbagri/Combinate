@@ -8,56 +8,57 @@
     <script>
         const userLoggedIn = JSON.parse('<%-JSON.stringify(userLoggedIn)%>');
     </script>
-    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css" />
     <script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.js"></script>
     <script src="https://kit.fontawesome.com/0f759e3ba5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" src="javascript/loading-bar.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
-    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="/javascript/loading-bar.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <title>Combinate | <%= locals.title %> </title>
 </head>
 
 <body>
     <div class="sidebar">
         <div class="combinate-logo">
-            <img src="images/logo.png" alt="" class="combinate-icon">
+            <img src="/images/logo.png" alt="" class="combinate-icon">
         </div>
         <div class="sidebar-links">
             <ul class="sidebar-links__links-container">
                 <a href="/overview">
                     <li class="sidebar-links__link">
-                        <img src="images/home.png" alt="">
+                        <img src="/images/home.png" alt="">
                         <h2>Overview</h2>
                     </li>
                 </a>
                 <a href="/todo">
                     <li class="sidebar-links__link">
-                        <img src="images/to-do-list.png" alt="">
+                        <img src="/images/to-do-list.png" alt="">
                         <h2>To-Do Lists</h2>
                     </li>
                 </a>
                 <a href="/users">
                     <li class="sidebar-links__link">
-                        <img src="images/loupe.png" alt="">
+                        <img src="/images/loupe.png" alt="">
                         <h2>Users</h2>
                     </li>
                 </a>
                 <a href="/chats">
                     <li class="sidebar-links__link">
-                        <img src="images/messenger.png" alt="">
+                        <img src="/images/messenger.png" alt="">
                         <h2>Chats</h2>
                     </li>
                 </a>
                 <li class="sidebar-links__link">
-                    <img src="images/bookmark.png" alt="">
+                    <img src="/images/bookmark.png" alt="">
                     <h2>Courses</h2>
                 </li>
                 <li class="sidebar-links__link">
-                    <img src="images/edit.png" alt="">
+                    <img src="/images/edit.png" alt="">
                     <h2>Articles</h2>
                 </li>
             </ul>
@@ -91,9 +92,9 @@
             <div class="manager-popup-down">
                 <h2 class="manager-popup-down__email"><%= `${locals.userLoggedIn.email}`%></h2>
                 <div class="manager-popup-down__options-container">
-                    <a class="settings">
-                        <!-- <span class="option-icon settings-icon material-icons material-icons-outlined">settings</span>    -->
-                        <!-- <h3 class="settings-name">Profile</h3>                      -->
+                    <a href="/userProfile/<%=locals.userLoggedIn._id%>" class="settings">
+                        <span class="option-icon settings-icon material-icons material-icons-outlined">settings</span>   
+                        <h3 class="settings-name">Profile</h3>                     
                     </a>
                     <a href="/logout" class="logout">
                         <span class="option-icon logout-icon material-icons material-icons-outlined">logout</span>
