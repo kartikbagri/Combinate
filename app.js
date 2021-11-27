@@ -92,6 +92,12 @@ app.use('/overview', middleware.isLoggedIn, overviewRoute);
 const todoRoute = require('./routes/todoRoute');
 app.use('/todo', middleware.isLoggedIn, todoRoute);
 
+const aboutRoute = require('./routes/aboutRoute');
+app.use('/about', aboutRoute);
+
+const teamRoute = require('./routes/teamRoute');
+app.use('/team', teamRoute);
+
 const usersApiRoute = require('./routes/api/users');
 app.use('/api/users', usersApiRoute);
 

@@ -84,11 +84,15 @@ editInterestsBtn.addEventListener('click', () => {
 })
 
 profilePageUserImg.addEventListener('mouseover', () => {
-    document.getElementById('changeProfilePicBtn').classList.remove('btn-hidden');
+    if(user._id == userLoggedIn._id) {
+        document.getElementById('changeProfilePicBtn').classList.remove('btn-hidden');
+    }
 })
 
 profilePageUserImg.addEventListener('mouseout', () => {
-    document.getElementById('changeProfilePicBtn').classList.add('btn-hidden');
+    if(user._id == userLoggedIn._id) {
+        document.getElementById('changeProfilePicBtn').classList.add('btn-hidden');
+    }
 })
 
 const openModal = (modalName) => {
@@ -110,7 +114,9 @@ document.querySelector('.backdrop').addEventListener('click', function() {
 });
 
 changeProfilePicBtn.addEventListener('click', () => {
-    openModal('profilePic');
+    if(user._id == userLoggedIn._id) {
+        openModal('profilePic');
+    }
 });
 
 profilePicCloseModal.addEventListener('click', () => {
@@ -149,18 +155,6 @@ profilePicUploadBtn.addEventListener('click', () => {
         })
         .catch(err => console.log(err));
         location.reload();
-        // $.ajax({
-        //     url: '/api/users/profilePicture',
-        //     type: 'POST',
-        //     data: formData,
-        //     // For not converting the transferring data to string
-        //     processData: false,
-        //     // For forcing not to add header
-        //     contentType: false,
-        //     success: function() {
-        //         location.reload();
-        //     }
-        // });
     });
 });
 

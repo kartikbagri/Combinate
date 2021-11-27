@@ -4,6 +4,10 @@
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
 
 body{
     /* background: linear-gradient(241.2deg, #0F0C29 18.93%, #302B63 53.51%, #24243E 92.13%); */

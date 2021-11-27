@@ -1378,11 +1378,19 @@ textarea {
 }
 
 .follow-btn {
-    background-color: blue;
+    background-color: rgb(87, 87, 238);
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 2px solid white;
+    cursor: pointer;
 }
 
 .following {
-    background-color: red;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 .hidden {
