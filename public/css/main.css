@@ -946,6 +946,10 @@ textarea {
 }
 
 .modal-body {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 0 5px;
 }
 
@@ -1335,6 +1339,7 @@ textarea {
     padding: 20px;
     margin: 30px 15px;
     height: 300px;
+    text-decoration: none;
 }
 
 .user-img-container {
@@ -1400,4 +1405,182 @@ textarea {
     color:rgb(113, 113, 113);
     text-align: center;
     font-size: 1.1rem;
+}
+
+.img-preview-container {
+    margin: auto;
+    width: 400px;
+    height: 400px;
+}
+
+.choose-file-btn {
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.preview-hidden {
+    display: none;
+}
+
+.profile-page-user-img-container {
+    cursor: pointer;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.change-profile-pic-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #413a808c;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-hidden {
+    visibility: hidden;
+}
+
+.profile-page-user-img {
+    width: 100%;
+    height: 100%;
+}
+
+.user-profile__top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    padding-bottom: 10px;
+}
+
+.profile-page-user-name {
+    text-align: center;
+}
+
+.profile-page-user-info {
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+.profile-page-user-email {
+    text-align: center;
+    font-size: 1.2rem;
+    color:rgb(113, 113, 113);
+}
+
+.user-profile-middle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.following-followers-info, .followers-count, .following-count {
+    display: flex;
+}
+
+.followers-count, .following-count {
+    font-size: 1.2rem;
+}
+
+.followers-count__content {
+    padding: 10px;
+}
+
+.user-profile-interests {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    padding: 20px;
+    position: relative;
+}
+
+.user-profile-interests__bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.interest-container {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.user-profile-bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    position: relative;
+}
+
+.user-profile-bio__content {
+    padding: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    color:rgb(189, 189, 189);
+}
+
+.user-profile-bio__title {
+    padding: 10px;
+    text-decoration: underline;
+}
+
+.user-profile-interests__title {
+    padding: 10px;
+    text-decoration: underline;
+}
+
+.edit-bio {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.edit-interests {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.change-intro-textarea {
+    width: 100%;
+    padding: 10px;
+    color: black;
+}
+
+.change-interests-input {
+    padding: 6px;
+    color: black;
+}
+
+.add-interests-btn {
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.current-interests {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.interests-input-section {
+    display: flex;
+    align-items: center;
+
 }

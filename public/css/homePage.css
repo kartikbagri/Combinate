@@ -91,6 +91,7 @@ body{
     color: white;
     font-weight: 700;
     padding: 40px;
+    padding-bottom: 0;
 }
 
 .main_sub_heading{
@@ -512,3 +513,31 @@ body{
     justify-content: space-evenly;
     align-items: center;
 }
+
+.ml6 {
+    position: relative;
+    font-family: 'Heading';
+    font-weight: 900;
+    font-size: 4.3em;
+    color: #D76D77;
+    text-shadow: 3px 3px 2px pink;
+   }
+
+  .ml6 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+    margin-left: 40px;
+  }
+  
+  .ml6 .letter {
+    display: inline-block;
+    line-height: 1em;
+    /* background: linear-gradient(94.48deg, #8663C6 18.95%, rgba(215, 109, 119, 0.831544) 45.5%, rgba(255, 175, 123, 0.91) 71.04%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+  } 
+  

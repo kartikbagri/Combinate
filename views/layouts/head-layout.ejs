@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css" integrity="sha512-+VDbDxc9zesADd49pfvz7CgsOl2xREI/7gnzcdyA9XjuTxLXrdpuz21VVIqc5HPfZji2CypSbxx1lgD7BgBK5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js" integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <title>Combinate | <%= locals.title %> </title>
 </head>
 
@@ -78,7 +81,7 @@
             <div class="user-container">
                 <h2 class="user-container__name"><%= `${locals.userLoggedIn.name}`%> </h2>
                 <div id="userContainerIcon" class="user-container__icon-container">
-                    <img src="<%=locals.userLoggedIn.profilePic||'images/profilePic.jpeg'%>" alt="">
+                    <img src="<%=locals.userLoggedIn.profilePic%>" alt="">
                 </div>
             </div>
         </nav>
@@ -86,7 +89,7 @@
             <div class="manager-popup-top">
                 <h3 class="manager-popup-icon__name"><%= `${locals.userLoggedIn.name}`%></h3>
                 <div class="manager-popup-top__img-container">
-                    <img class="manager-popup-top__img" src="<%=locals.userLoggedIn.profilePic||'images/profilePic.jpeg'%>" alt="">
+                    <img class="manager-popup-top__img" src="<%=locals.userLoggedIn.profilePic%>" alt="">
                 </div>
             </div>
             <div class="manager-popup-down">

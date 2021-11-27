@@ -1,10 +1,101 @@
-<%- include('layouts/head-layout') %> 
-<%console.log(locals.user)%> 
-<div class="profile-page-user-img-container">
-    <img class="profile-page-user-img" src="<%=locals.user.profilePic%>" alt="">
+<%- include('layouts/head-layout') %>
+<script>
+    const user = JSON.parse('<%-JSON.stringify(user)%>');
+</script>
+<div class="user-profile__top-section">
+    <div id="profilePageUserImg" class="profile-page-user-img-container">
+        <div id="changeProfilePicBtn" class="change-profile-pic-btn btn-hidden">
+            <span class="material-icons material-icons-outlined">photo_camera</span>
+        </div>
+        <img class="profile-page-user-img" src="<%=locals.user.profilePic%>" alt="Profile Pic">
+    </div>
+    <div class="profile-page-user-info">
+        <h1 class="profile-page-user-name"><%=locals.user.name%></h1>
+        <p class="profile-page-user-email"><%=locals.user.email%></p>
+    </div>
 </div>
 
+<div class="user-profile-middle-section">
+    <div class="following-followers-info">
+        <div class="followers-count">
+            <p class="followers-count__content followers-count__text">Followers</p>
+            <p class="followers-count__content followers-count__number"><%=locals.user.followers.length%></p>
+        </div>
+        <div class="following-count">
+            <p class="followers-count__content following-count__text">Following</p>
+            <p class="followers-count__content following-count__number"><%=locals.user.following.length%></p>
+        </div>
+    </div>
+    <div class="user-profile-bio">
+        <% if(userLoggedIn._id == user._id) { %>
+            <span id="editBioBtn" class="edit-bio material-icons material-icons-outlined">edit</span>
+        <% } else { %>
+            <span id="editBioBtn" class="hidden edit-interests material-icons material-icons-outlined">edit</span>
+        <% } %>
+        <h2 class="user-profile-bio__title">Introduction</h2>
+        <p class="user-profile-bio__content"><%=user.bio%></p>
+    </div>
+    <div class="user-profile-interests">
+        <% if(userLoggedIn._id == user._id) { %> 
+            <span id="editInterestsBtn" class="edit-interests material-icons material-icons-outlined">edit</span>
+        <% } else { %>
+            <span id="editInterestsBtn" class="hidden edit-interests material-icons material-icons-outlined">edit</span>
+        <% } %>
+        <div class="user-profile-interests__top-section">
+            <h2 class="user-profile-interests__title">Interests</h2>
+        </div>
+        <div id="userInterestsContainer" class="user-profile-interests__bottom-section">
+            
+        </div>
+    </div>
+</div>
+
+<div class="backdrop"></div>
+<div id="profilePicModal" class="modal">
+    <h2 class="modal-title">Upload a new profile picture</h2>
+    <i id="profilePicCloseModal" class="close-modal fas fa-times"></i>
+    <div class="modal-body">
+        <input type="file" class="choose-file-btn" name="profilePhoto" id="profilePhoto">
+        <div id="profilePhotoPreviewContainer" class="img-preview-container preview-hidden">
+            <img class="preview" id="profilePhotoPreview">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="profilePicUploadBtn" class="submit-btn">Save</button>
+    </div>
+</div>
+
+<div id="editBioModal" class="modal">
+    <h2 class="modal-title">Edit your Introduction</h2>
+    <i id="editBioCloseModal" class="close-modal fas fa-times"></i>
+    <div class="modal-body">
+        <textarea class="change-intro-textarea" name="introduction" id="editBioInput" cols="30" rows="10" placeholder="Modify your introduction"><%=user.bio%> </textarea>
+    </div>
+    <div class="modal-footer">
+        <button id="editBioUploadBtn" class="submit-btn">Save</button>
+    </div>
+</div>
+
+<div id="editInterestsModal" class="modal">
+    <h2 class="modal-title">Modify Interests</h2>
+    <i id="editInterestsCloseModal" class="close-modal fas fa-times"></i>
+    <div class="modal-body">
+        <div id="currentInterests" class="current-interests">
+            
+        </div>
+        <div class="interests-input-section">
+            <input class="change-interests-input" type="text" name="interests" id="editInterestsInput">
+            <span id="addInterestsBtn" class="add-interests-btn material-icons material-icons-outlined">add</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="editInterestsUploadBtn" class="submit-btn">Save</button>
+    </div>
+</div>
+
+
 <script src="/javascript/common.js"></script>
+<script src="/javascript/userProfile.js"></script>
 </div>
 </div>
 </body>

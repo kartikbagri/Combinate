@@ -119,7 +119,6 @@ app.use('/userProfile', middleware.isLoggedIn, userProfileRoute);
 
 // Chats Route
 const chatsRoute = require('./routes/chatsRoute');
-const { transformAuthInfo } = require('passport');
 app.use('/chats', middleware.isLoggedIn, chatsRoute);
 
 app.get('/logout', (req, res) => {

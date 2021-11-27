@@ -32,25 +32,22 @@ const createUserCard = (user) => {
         followButtonHTML = `<button id="${user._id}" class="follow-btn">Follow</button>`;
     }
     return  `
-    <div class="user-card">
-        <div class="user-img-container">
-            <img class="dp" src="${user.profilePic ? user.profilePic : 'images/profilePic.jpeg'}" alt="user-img">
-        </div>
-    <h3 class="user-name">
-        ${user.name}
-    </h3>
-    <div class="user-card__info">
-        <div class="interests-container">
-            <div class="interest">
-                <h3>Interests : Travelling, Music</h3>
+    <a href="/userProfile/${user._id}" class="user-card">
+            <div class="user-img-container">
+                <img class="dp" src="${user.profilePic ? user.profilePic : 'images/profilePic.jpeg'}" alt="user-img">
+            </div>
+        <h3 class="user-name">
+            ${user.name}
+        </h3>
+        <div class="user-card__info">
+            <div class="interests-container">
+                <div class="interest">
+                    <h3>Interests : ${user.interests.join(", ")}</h3>
+                </div>
             </div>
         </div>
-        <h3 class="following-info">
-            Following since : 7th Jan, 2021
-        </h3>
-    </div>
-        ${followButtonHTML}
-    </div>
+            ${followButtonHTML}
+    </a>
     `
 }
 

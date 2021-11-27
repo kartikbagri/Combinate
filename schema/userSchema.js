@@ -18,16 +18,22 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String,
-        default: 'images/profilePic.jpeg'
+        default: '/images/profilePic.jpeg'
     },
     codingSites: {
         type: [String],
         default: ['codeforces']
     },
+    bio: {
+        type: String
+    },
     tasks: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Task'
     }],
+    interests: {
+        type: [String]
+    },
     categories: {
         type: [String]
     },

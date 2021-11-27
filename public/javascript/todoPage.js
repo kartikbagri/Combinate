@@ -165,7 +165,6 @@ const renderTasks = async () => {
     for(let i = 0; i < tasks.length; i++) {
         if(tasks[i].isCompleted === false) {
             let sideIcon = '';
-            console.log(tasks[i]._id)
             if(tasks[i].endTime < new Date().toISOString()) {
                 sideIcon = `<span data-taskId="${tasks[i]._id}" data-taskTitle="${tasks[i].title}" class="task-missed-btn material-icons material-icons-outlined">priority_high</span>`
             } else {
@@ -206,7 +205,6 @@ const addNewCategory = async (newCategory) => {
         categories.push(newCategory);
         const res = await axios.patch(`/api/tasks/category/new/${userLoggedIn._id}`, categories)
         .catch(err => console.log(err));
-        console.log(res);
         location.reload();
     }
 }
@@ -226,7 +224,6 @@ const addNewTask = async (newTask) => {
 document.addEventListener('click', event => {
     if(event.target.classList.contains('task-complete-btn')) {
         const taskId = event.target.dataset.taskid;
-        console.log(taskId);
         const taskTitle = event.target.dataset.tasktitle;
         const completeTaskModalTitle = document.getElementById('completeTaskModalTitle');
         completeTaskModalTitle.innerText = `Complete Task: ${taskTitle}`;

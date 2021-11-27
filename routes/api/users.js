@@ -1,8 +1,41 @@
 const express = require('express');
 const User = require('../../schema/userSchema');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const upload = multer({ dest: './public/uploads/' });
 
 // ********** Using Modules **********
 const router = express.Router();
+
+router.patch('/interests/:id', async (req, res) => {
+    const { id } = req.params;
+    const { interests } = req.body;
+    await User.findByIdAndUpdate(id, { interests })
+    .catch(err => console.log(err));
+    res.sendStatus(200);
+})
+
+router.patch('/bio/:id', async(req, res) => {
+    const bio = req.body.bio;
+    await User.findByIdAndUpdate(req.params.id, { bio })
+    .catch(err => console.log(err));
+    res.sendStatus(200);
+});
+
+router.post('/profilePic/:id', upload.single('croppedImage'), async(req, res) => {
+    const filePath = `/uploads/${req.file.filename}.png`;
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, `../../public/${filePath}`);
+    fs.rename(tempPath, targetPath, async function(err) {
+        if(err){
+            console.log(err);
+            return res.sendStatus(400);
+        }
+        await User.findByIdAndUpdate(req.params.id,{profilePic: filePath}, {new: true});
+        res.sendStatus(204);
+    });
+})
 
 router.get('/user/:id', async (req, res) => {
     const user = await User.findById(req.params.id)
