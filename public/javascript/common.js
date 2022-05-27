@@ -3,6 +3,12 @@ const managerPopup = document.getElementById('managerPopup');
 const search = document.getElementById('search');
 const searchResults = document.getElementById('searchResults');
 
+searchResults.addEventListener('click', (e) => {
+    if(e.target.closest('.follow-btn')) {
+        e.preventDefault();
+    }
+});
+
 userContainerIcon.addEventListener('click', () => {
     managerPopup.classList.toggle('active-popup');
 });

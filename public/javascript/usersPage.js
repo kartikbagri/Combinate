@@ -1,5 +1,11 @@
 const usersContainer = document.getElementById('usersContainer');
 
+usersContainer.addEventListener('click', (e) => {
+    if(e.target.closest('.follow-btn')) {
+        e.preventDefault();
+    }
+});
+
 const renderUsers = async () => {
     const users = await axios.get('/api/users/all');
     usersContainer.innerHTML = '';

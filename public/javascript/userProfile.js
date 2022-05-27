@@ -18,6 +18,7 @@ const interests = user.interests? user.interests : [];
 const userInterestsContainer = document.getElementById('userInterestsContainer');
 let cropper;
 
+
 editBioUploadBtn.addEventListener('click', async () => {
     const bio = editBioInput.value;
     if(bio === '') {
@@ -27,7 +28,7 @@ editBioUploadBtn.addEventListener('click', async () => {
     await axios.patch(`/api/users/bio/${userLoggedIn._id}`, {bio})
     .catch(err => console.log(err));
     location.reload();
-})
+});
 
 const renderInterestsInModal = () => {
     interests.forEach(interest => {
@@ -51,49 +52,49 @@ addInterestsBtn.addEventListener('click', () => {
     editInterestsInput.value = '';
     currentInterests.innerHTML = '';
     renderInterestsInModal();
-})
+});
 
 editInterestsUploadBtn.addEventListener('click', async () => {
     await axios.patch(`/api/users/interests/${userLoggedIn._id}`, {interests})
     .catch(err => console.log(err));
     location.reload();
-})
+});
 
 backdrop.addEventListener('click', () => {
     closeModal('profilePic');
     closeModal('editBio');
     closeModal('editInterests');
-})
+});
 
 editBioCloseModal.addEventListener('click', () => {
     closeModal('editBio');
-})
+});
 
 editInterestsCloseModal.addEventListener('click', () => {
     closeModal('editInterests');
-})
+});
 
 editBioBtn.addEventListener('click', () => {
     openModal('editBio');
-})
+});
 
 editInterestsBtn.addEventListener('click', () => {
     currentInterests.innerHTML = '';
     renderInterestsInModal();
     openModal('editInterests');
-})
+});
 
 profilePageUserImg.addEventListener('mouseover', () => {
     if(user._id == userLoggedIn._id) {
         document.getElementById('changeProfilePicBtn').classList.remove('btn-hidden');
     }
-})
+});
 
 profilePageUserImg.addEventListener('mouseout', () => {
     if(user._id == userLoggedIn._id) {
         document.getElementById('changeProfilePicBtn').classList.add('btn-hidden');
     }
-})
+});
 
 const openModal = (modalName) => {
     document.querySelector('.backdrop').classList.add('modal-show');
@@ -157,5 +158,29 @@ profilePicUploadBtn.addEventListener('click', () => {
         location.reload();
     });
 });
+
+const followBtn = document.getElementById('followBtn');
+if(user._id == userLoggedIn._id) {
+    followBtn.classList.add('btn-hidden');
+}
+
+followBtn.dataset.userid = user._id;
+if(userLoggedIn.following.includes(user._id)) {
+    followBtn.innerHTML = 'Following';
+    followBtn.classList.add('following');
+} else {
+    followBtn.innerHTML = 'Follow';
+    followBtn.classList.remove('following');
+}
+
+followBtn.addEventListener('click', async (e) => {
+    const id = e.target.dataset.userid;
+    const isFollowing = e.target.classList.contains('following');
+    axios.patch(`/api/users/follow`, {userId: userLoggedIn._id, targetUserId: id, isFollowing: isFollowing})
+    .then(() => {
+        location.reload();
+    })
+    .catch(err => console.log(err));
+})
 
 renderInterestsInContainer();

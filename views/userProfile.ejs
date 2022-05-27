@@ -2,7 +2,7 @@
 <script>
     const user = JSON.parse('<%-JSON.stringify(user)%>');
 </script>
-<div class="user-profile__top-section">
+<div id="userProfileTopSection" class="user-profile__top-section">
     <div id="profilePageUserImg" class="profile-page-user-img-container">
         <div id="changeProfilePicBtn" class="change-profile-pic-btn btn-hidden">
             <span class="material-icons material-icons-outlined">photo_camera</span>
@@ -13,6 +13,7 @@
         <h1 class="profile-page-user-name"><%=locals.user.name%></h1>
         <p class="profile-page-user-email"><%=locals.user.email%></p>
     </div>
+    <button id="followBtn" class="follow-btn"></button>
 </div>
 
 <div class="user-profile-middle-section">

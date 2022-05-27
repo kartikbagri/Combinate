@@ -47,7 +47,6 @@ const registerUser = async (req, res) => {
         if(err.name == 'UserExistsError') {
             req.flash('error-register-user', 'Username taken');
         } else {
-            //FIXME:
             req.flash('error-register-email', 'Email already exists');
         }
         const prevInputs = {name, email, username} = req.body;

@@ -98,6 +98,24 @@ app.use('/about', aboutRoute);
 const teamRoute = require('./routes/teamRoute');
 app.use('/team', teamRoute);
 
+// Search Route
+const searchRoute = require('./routes/searchRoute');
+app.use('/users', middleware.isLoggedIn, searchRoute);
+
+// Chats Route
+const chatsRoute = require('./routes/chatsRoute');
+app.use('/chats', middleware.isLoggedIn, chatsRoute);
+
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+
+// UserProfilePage Route
+const userProfileRoute = require('./routes/userProfileRoute');
+app.use('/userProfile', middleware.isLoggedIn, userProfileRoute);
+
+//  RESTful API
 const usersApiRoute = require('./routes/api/users');
 app.use('/api/users', usersApiRoute);
 
@@ -110,27 +128,9 @@ app.use('/api/chats', chatsApiRoute);
 const messagesApiRoute = require('./routes/api/messages');
 app.use('/api/messages', messagesApiRoute);
 
-// Search Route
-const searchRoute = require('./routes/searchRoute');
-app.use('/users', middleware.isLoggedIn, searchRoute);
-
-// UserProfilePage Route
-const userProfileRoute = require('./routes/userProfileRoute');
-app.use('/userProfile', middleware.isLoggedIn, userProfileRoute);
-
-
 // Courses Route
 // const coursesRoute = require('./routes/coursesRoute');
 // app.use('/courses', coursesRoute);
-
-// Chats Route
-const chatsRoute = require('./routes/chatsRoute');
-app.use('/chats', middleware.isLoggedIn, chatsRoute);
-
-app.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
-});
 
 // Articles Route
 // const articlesRoute = require('./routes/articleRoute');
