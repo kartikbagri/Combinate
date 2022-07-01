@@ -47,7 +47,7 @@ app.use(flash());
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/auth/google/combinate',
+    callbackURL: 'https://combinate-productivity.herokuapp.com/auth/google/combinate',
   },
   async function(accessToken, refreshToken, profile, cb) {
     const { err, currentUser } = await User.findOrCreate(profile);
@@ -55,7 +55,7 @@ passport.use(new GoogleStrategy({
 }));
 
 // ********** Database Connection **********
-mongoose.connect('mongodb://localhost:27017/combinateDatabase').then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('Database Connection Successful');
 }).catch((err) => {
     console.log(`Error setting up connection to database: ${err}`);
